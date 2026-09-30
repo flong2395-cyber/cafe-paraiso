@@ -1,0 +1,68 @@
+/* Café Paraíso — área de Recursos Humanos */
+.hr-body {
+    --hr-accent: #315f79;
+    --hr-accent-dark: #24495d;
+    --hr-soft: #e8f1f5;
+    --hr-line: #dce5e9;
+}
+.hr-body .admin-brand strong { letter-spacing: -.02em; }
+.hr-body .admin-nav a.active { background: #2b3940; box-shadow: inset 3px 0 0 #8fb5c7; }
+.hr-body .admin-topbar { margin-bottom: 24px; }
+.hr-body .admin-title h1 { letter-spacing: -.035em; }
+.hr-body .admin-user { border-color: var(--hr-line); }
+.hr-body .job-stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.hr-body .job-stats .admin-card {
+    position: relative; overflow: hidden; min-height: 112px;
+    border-color: var(--hr-line);
+    box-shadow: 0 8px 24px rgba(39, 61, 72, .04);
+}
+.hr-body .job-stats .admin-card::after {
+    content: ""; position: absolute; right: -28px; top: -30px; width: 100px; height: 100px;
+    border-radius: 50%; background: var(--hr-soft);
+}
+.hr-body .job-stats .admin-card-value { position: relative; z-index: 1; color: var(--hr-accent-dark); font-size: 1.9rem; }
+.hr-body .job-stats .admin-card-label { position: relative; z-index: 1; font-weight: 600; }
+.hr-candidates-section { overflow: hidden; box-shadow: 0 10px 30px rgba(39, 61, 72, .045); }
+.hr-section-heading {
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding: 22px 22px 18px; border-bottom: 1px solid var(--hr-line); background: linear-gradient(180deg,#fff,#fbfcfc);
+}
+.hr-section-heading h2 { margin: 5px 0 3px; font: 650 1.15rem/1.25 Poppins,Inter,sans-serif; }
+.hr-section-heading p { margin:0; color:var(--admin-muted); font-size:.84rem; }
+.hr-kicker { color:var(--hr-accent); font-size:.74rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+.hr-live { display:inline-flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid var(--hr-line); border-radius:999px; color:#49606d; background:#f7fafb; font-size:.75rem; font-weight:600; white-space:nowrap; }
+.hr-live span { width:7px; height:7px; border-radius:50%; background:#4e9b70; box-shadow:0 0 0 4px #e4f2e9; }
+.hr-body .job-toolbar { display:grid; grid-template-columns:minmax(240px,1fr) 190px auto; gap:10px; padding:16px 18px; background:#f8fafb; border-bottom:1px solid var(--hr-line); }
+.hr-body .job-search-wrap { display:flex; align-items:center; gap:9px; min-height:42px; padding:0 12px; background:#fff; border:1px solid var(--hr-line); border-radius:11px; }
+.hr-body .job-search-wrap i { color:#71828b; }
+.hr-body .job-search-wrap input { width:100%; border:0; outline:0; background:transparent; color:var(--admin-text); }
+.hr-body .job-filter { min-height:42px; padding:0 12px; border:1px solid var(--hr-line); border-radius:11px; background:#fff; color:var(--admin-text); }
+.hr-body .job-status { display:inline-flex; align-items:center; padding:5px 9px; border-radius:999px; font-size:.73rem; font-weight:700; }
+.hr-body .job-status.pending { background:#fff2d8; color:#8a5a00; }
+.hr-body .job-status.approved { background:var(--hr-soft); color:var(--hr-accent); }
+.hr-body .job-status.rejected { background:#fae9e7; color:#a43d36; }
+.hr-body .job-status.archived { background:#eee9e3; color:#625b54; }
+.hr-body .job-position { color:var(--admin-text); font-weight:600; }
+.hr-body .job-candidate { display:grid; gap:3px; }
+.hr-body .job-candidate strong { font-weight:650; }
+.hr-body .job-candidate small { color:var(--admin-muted); font-size:.76rem; }
+.hr-body .job-actions { display:flex; gap:6px; }
+.hr-body .job-actions .admin-button { min-width:38px; padding:8px; }
+.hr-body .job-delete { color:var(--admin-danger); }
+.hr-body .job-modal-card { box-shadow:0 24px 70px rgba(18,31,38,.22); }
+.hr-loading { display:inline-flex; align-items:center; gap:8px; }
+.hr-loading i { animation: hr-spin .9s linear infinite; }
+@keyframes hr-spin { to { transform:rotate(360deg); } }
+@media (max-width: 1100px) {
+    .hr-body .job-stats { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 800px) {
+    .hr-body .job-stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .hr-body .admin-main { padding:20px 14px; }
+    .hr-section-heading { align-items:flex-start; flex-direction:column; }
+    .hr-body .job-toolbar { grid-template-columns:1fr; }
+}
+@media (max-width: 520px) {
+    .hr-body .job-stats { grid-template-columns:1fr; }
+    .hr-live { width:100%; justify-content:center; }
+}

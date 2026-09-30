@@ -1,0 +1,398 @@
+/* =========================================================
+   CONTACTO - CAFÉ PARAÍSO
+   Diseño profesional y responsive
+   ========================================================= */
+
+.contact-page {
+    background: var(--white);
+    color: var(--text-color);
+}
+
+.contact-hero {
+    padding: 110px 0 55px;
+    text-align: center;
+}
+
+.contact-hero .container {
+    max-width: 850px;
+}
+
+.contact-badge,
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(24, 70, 61, 0.09);
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.contact-hero h1 {
+    margin: 22px 0 14px;
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 5vw, 4.1rem);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+}
+
+.contact-hero p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--gray-500);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.contact-companies {
+    padding: 30px 0 85px;
+}
+
+.contact-companies .container,
+.contact-form-section .container {
+    max-width: 1120px;
+}
+
+.section-heading {
+    max-width: 760px;
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 14px 0 10px;
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--gray-500);
+    line-height: 1.7;
+}
+
+/* Tarjetas de empresas */
+
+.company-card {
+    height: 100%;
+    padding: 30px;
+    border: 1px solid #e8ece9;
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: 0 12px 35px rgba(20, 35, 25, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(20, 35, 25, 0.11);
+}
+
+.company-card-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.company-icon {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(24, 70, 61, 0.09);
+    color: var(--primary-color);
+    font-size: 1.45rem;
+}
+
+.company-card h3 {
+    margin: 0 0 5px;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.company-card-header span {
+    color: #6b7785;
+    font-size: 0.92rem;
+}
+
+.company-divider {
+    height: 1px;
+    margin: 23px 0;
+    background: #e7ebe8;
+}
+
+.company-detail {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.company-detail:last-child {
+    margin-bottom: 0;
+}
+
+.company-detail > i {
+    width: 22px;
+    flex: 0 0 22px;
+    padding-top: 2px;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.company-detail strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.company-detail p {
+    margin: 0;
+    color: var(--gray-500);
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+.company-detail a {
+    color: var(--gray-500);
+    text-decoration: none;
+}
+
+.company-detail a:hover {
+    color: var(--primary-color);
+}
+
+/* Formulario */
+
+.contact-form-section {
+    padding: 20px 0 100px;
+    background: var(--gray-100);
+}
+
+.contact-form-wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px;
+    border: 1px solid #e7ece9;
+    border-radius: 26px;
+    background: var(--white);
+    box-shadow: 0 15px 45px rgba(20, 35, 25, 0.07);
+}
+
+.contact-form-wrapper .section-heading {
+    margin-bottom: 38px;
+}
+
+.professional-contact-form label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text-color);
+    font-size: 0.93rem;
+    font-weight: 600;
+}
+
+.professional-contact-form label span {
+    color: #e32626;
+}
+
+.professional-contact-form label small {
+    color: #89939d;
+    font-weight: 400;
+}
+
+.professional-contact-form input,
+.professional-contact-form select,
+.professional-contact-form textarea {
+    width: 100%;
+    border: 1px solid #dce2de;
+    border-radius: 11px;
+    padding: 13px 15px;
+    background: var(--white);
+    color: var(--text-color);
+    font: inherit;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.professional-contact-form input,
+.professional-contact-form select {
+    min-height: 48px;
+}
+
+.professional-contact-form textarea {
+    min-height: 155px;
+    resize: vertical;
+}
+
+.professional-contact-form input::placeholder,
+.professional-contact-form textarea::placeholder {
+    color: #a2aab2;
+}
+
+.professional-contact-form input:focus,
+.professional-contact-form select:focus,
+.professional-contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(24, 70, 61, 0.1);
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 32px;
+    padding-top: 26px;
+    border-top: 1px solid #edf0ee;
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    color: #71808d;
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.privacy-note i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.contact-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 180px;
+    min-height: 50px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.contact-submit:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.contact-submit i {
+    transition: transform 0.2s ease;
+}
+
+.contact-submit:hover i {
+    transform: translateX(3px);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .contact-hero {
+        padding: 80px 20px 42px;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .contact-hero p {
+        font-size: 0.96rem;
+    }
+
+    .contact-companies {
+        padding: 15px 18px 65px;
+    }
+
+    .contact-form-section {
+        padding: 10px 18px 70px;
+    }
+
+    .company-card {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .company-card-header {
+        gap: 14px;
+    }
+
+    .company-icon {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+        font-size: 1.2rem;
+    }
+
+    .company-card h3 {
+        font-size: 1rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .form-footer {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .privacy-note {
+        align-items: flex-start;
+    }
+
+    .contact-submit {
+        width: 100%;
+    }
+}
+
+
+.contact-form-status {
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    border: 1px solid #dce7e0;
+    border-radius: 12px;
+    font-size: .92rem;
+    line-height: 1.5;
+}
+
+.contact-form-status.success {
+    border-color: #b9dfc9;
+    background: #effaf3;
+    color: #21633f;
+}
+
+.contact-form-status.error {
+    border-color: #e8c1bd;
+    background: #fff5f4;
+    color: #8f2f29;
+}
+
+.contact-submit:disabled {
+    opacity: .7;
+    cursor: wait;
+    transform: none;
+}

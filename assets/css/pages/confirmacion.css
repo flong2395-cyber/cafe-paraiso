@@ -1,0 +1,142 @@
+/* =========================================================
+   CONFIRMACIÓN DE CORREO — CAFÉ PARAÍSO
+   ========================================================= */
+
+.page-confirmation {
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(24, 70, 61, 0.08), transparent 34%),
+        radial-gradient(circle at 80% 80%, rgba(24, 70, 61, 0.06), transparent 30%),
+        var(--gray-100);
+}
+
+.confirmation-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 52px 44px 44px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid #e5ebe7;
+    border-radius: 28px;
+    box-shadow: 0 24px 70px rgba(25, 35, 30, 0.10);
+}
+
+.confirmation-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e9f8ef;
+    color: #008f43;
+    font-size: 2.35rem;
+}
+
+.confirmation-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 18px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #eef9f2;
+    color: #008f43;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.confirmation-card h1 {
+    margin: 0 0 14px;
+    color: var(--gray-900);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 2.35rem);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.confirmation-card > p {
+    max-width: 390px;
+    margin: 0 auto;
+    color: var(--gray-500);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.confirmation-actions {
+    margin-top: 30px;
+    display: grid;
+    gap: 11px;
+}
+
+.confirmation-actions .caracol-btn {
+    min-height: 52px;
+    width: 100%;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.confirmation-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.confirmation-back:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.confirmation-security {
+    margin: 28px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid #edf0ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: var(--gray-500);
+    font-size: 0.78rem;
+}
+
+.confirmation-security i {
+    color: var(--primary-color);
+}
+
+@media (max-width: 575.98px) {
+    .page-confirmation {
+        padding: 24px 14px;
+        background: var(--white);
+    }
+
+    .confirmation-card {
+        padding: 38px 22px 30px;
+        border: 0;
+        border-radius: 22px;
+        box-shadow: none;
+    }
+
+    .confirmation-icon {
+        width: 68px;
+        height: 68px;
+        font-size: 2rem;
+    }
+
+    .confirmation-card h1 {
+        font-size: 1.8rem;
+    }
+
+    .confirmation-card > p {
+        font-size: 0.94rem;
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productos | Café Paraíso</title>
+    <meta name="description" content="Descubre el catálogo de productos de Café Paraíso.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages/productos.css">
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <main class="page-productos">
+        <section class="productos-header" aria-labelledby="productos-title">
+            <div class="container">
+                <span class="caracol-section-badge">Catálogo</span>
+                <h1 id="productos-title" class="productos-title">Productos para disfrutar cada momento</h1>
+                <p class="productos-lead">
+                    Explora nuestro catálogo y descubre los productos disponibles
+                    de Café Paraíso.
+                </p>
+
+                <nav id="products-filters" class="productos-filters" aria-label="Filtrar productos"></nav>
+
+                <p id="productos-count" class="productos-count" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="productos-grid" aria-labelledby="productos-grid-title">
+            <div class="container">
+                <h2 id="productos-grid-title" class="visually-hidden">Catálogo de productos</h2>
+                <div class="row g-4" id="productos-grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+    <script src="services/config/runtime-config.js"></script>
+    <script src="services/config/supabase.js"></script>
+    <script src="services/auth.js"></script>
+    <script src="services/cart.js"></script>
+    <script src="services/products.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="components/navbar/navbar.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

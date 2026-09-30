@@ -1,0 +1,22 @@
+{
+  "name": "cafe-paraiso",
+  "version": "1.0.0",
+  "description": "Aplicación web demostrativa de Café Paraíso con Supabase.",
+  "private": true,
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "configure": "node scripts/configure.js",
+    "configure:local": "node scripts/configure.js --local",
+    "dev": "node scripts/dev-server.js",
+    "supabase:start": "node scripts/supabase-start.js",
+    "supabase:stop": "supabase stop",
+    "db:reset": "supabase db reset --local",
+    "validate": "node scripts/validate.js"
+  },
+  "devDependencies": {
+    "supabase": "^2.118.0"
+  }
+}

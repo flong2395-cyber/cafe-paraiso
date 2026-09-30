@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con nosotros | Café Paraíso</title>
+    <meta name="description" content="Conoce cómo trabajar con Café Paraíso y presenta tu candidatura desde tu área personal.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/pages/trabajar.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="page-trabajar">
+        <section class="trabajar-header" aria-labelledby="trabajar-title">
+            <div class="container">
+                <span class="caracol-section-badge">Únete a nuestro equipo</span>
+                <h1 class="trabajar-title" id="trabajar-title">Tu próximo paso profesional puede empezar aquí.</h1>
+                <p class="trabajar-lead">
+                    Café Paraíso utiliza esta sección para demostrar un flujo completo de selección.
+                    Conoce el proceso y presenta una candidatura de prueba desde tu área personal.
+                </p>
+            </div>
+        </section>
+
+        <section class="trabajar-benefits" aria-labelledby="benefits-title">
+            <div class="container">
+                <div class="trabajar-section-heading">
+                    <span class="trabajar-kicker">Trabajar con nosotros</span>
+                    <h2 id="benefits-title">Una forma sencilla de presentar y seguir tu candidatura.</h2>
+                </div>
+
+                <div class="trabajar-benefits-grid">
+                    <article class="trabajar-benefit-card">
+                        <i class="bi bi-people" aria-hidden="true"></i>
+                        <h3>Equipo</h3>
+                        <p>Forma parte de un entorno donde el trabajo de cada persona cuenta.</p>
+                    </article>
+                    <article class="trabajar-benefit-card">
+                        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                        <h3>Desarrollo</h3>
+                        <p>Aprende, adquiere experiencia y desarrolla nuevas capacidades.</p>
+                    </article>
+                    <article class="trabajar-benefit-card">
+                        <i class="bi bi-cup-hot" aria-hidden="true"></i>
+                        <h3>Propósito</h3>
+                        <p>Participa en un proyecto demostrativo orientado al sector del café.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="trabajar-process-section" aria-labelledby="process-title">
+            <div class="container">
+                <div class="trabajar-process-card">
+                    <div class="trabajar-process-copy">
+                        <span class="trabajar-kicker">Cómo funciona</span>
+                        <h2 id="process-title">Tu candidatura, desde tu área personal.</h2>
+                        <p>
+                            Para proteger tus datos y mantener tu candidatura vinculada a tu cuenta,
+                            las solicitudes de empleo se realizan únicamente después de registrarte e iniciar sesión.
+                        </p>
+                    </div>
+
+                    <div class="trabajar-process-steps">
+                        <div class="trabajar-process-step">
+                            <span>01</span>
+                            <div><strong>Regístrate o inicia sesión</strong><p>Necesitamos una cuenta para identificar tu candidatura.</p></div>
+                        </div>
+                        <div class="trabajar-process-step">
+                            <span>02</span>
+                            <div><strong>Completa tu candidatura</strong><p>Adjunta tu CV y cuéntanos tu experiencia, formación y disponibilidad.</p></div>
+                        </div>
+                        <div class="trabajar-process-step">
+                            <span>03</span>
+                            <div><strong>Consulta el estado</strong><p>Desde Mi cuenta podrás revisar tus candidaturas y su estado de selección.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="trabajar-cta">
+                        <div>
+                            <strong id="trabajar-cta-title">¿Quieres presentar tu candidatura?</strong>
+                            <span id="trabajar-cta-text">Regístrate o inicia sesión para acceder al área de empleo.</span>
+                        </div>
+                        <a id="trabajar-cta-link" class="caracol-btn caracol-btn-primary" href="login.html">
+                            <span>Acceder a mi cuenta</span>
+                            <i class="bi bi-arrow-right trabajar-cta-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+    <script src="services/config/runtime-config.js"></script>
+    <script src="services/config/supabase.js"></script>
+    <script src="services/auth.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="components/navbar/navbar.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/pages/trabajar.js"></script>
+</body>
+</html>

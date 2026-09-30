@@ -1,0 +1,479 @@
+/* =========================================================
+   CAFÉ PARAÍSO — PÁGINA EMPRESA / NOSOTROS
+   Diseño responsive: escritorio, tablet y móvil
+   ========================================================= */
+
+.page-nosotros {
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+.nosotros-hero {
+    padding: 95px 0 80px;
+    text-align: center;
+}
+
+.nosotros-hero .container {
+    max-width: 1000px;
+}
+
+.nosotros-title {
+    max-width: 920px;
+    margin: 22px auto 26px;
+    font-size: clamp(2.5rem, 6vw, 4.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+.nosotros-lead {
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--gray-500);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+}
+
+/* =========================
+   ORIGEN
+   ========================= */
+
+.nosotros-origin {
+    padding: 50px 0 100px;
+}
+
+.nosotros-feature-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 70px;
+    align-items: center;
+}
+
+.nosotros-feature-copy {
+    width: 100%;
+    max-width: 620px;
+}
+
+.nosotros-kicker {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--primary-color);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.nosotros-feature-copy h2,
+.nosotros-section-heading h2,
+.nosotros-quality-card h2,
+.nosotros-cta h2 {
+    margin-bottom: 24px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.12;
+}
+
+.nosotros-feature-copy p,
+.nosotros-section-heading p,
+.nosotros-timeline-content p,
+.nosotros-values p {
+    color: var(--gray-500);
+    line-height: 1.8;
+}
+
+.nosotros-feature-copy p + p {
+    margin-top: 18px;
+}
+
+.nosotros-feature-media {
+    width: 100%;
+    margin: 0;
+}
+
+.nosotros-feature-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.nosotros-feature-media figcaption {
+    margin-top: 12px;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* =========================
+   TIMELINE
+   ========================= */
+
+.nosotros-timeline {
+    padding: 100px 0;
+    background: var(--gray-100);
+}
+
+.nosotros-section-heading {
+    max-width: 850px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.nosotros-section-heading p {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.nosotros-timeline-list {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.nosotros-timeline-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(24, 70, 61, 0.2);
+    transform: translateX(-50%);
+}
+
+/*
+ * Escritorio:
+ * texto | marcador | imagen
+ * En los elementos pares se invierte:
+ * imagen | marcador | texto
+ *
+ * Se definen explícitamente las posiciones para evitar
+ * que el algoritmo de auto-placement de CSS rompa la
+ * distribución en determinados tamaños de pantalla.
+ */
+
+.nosotros-timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+    gap: 34px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+.nosotros-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.nosotros-timeline-item > * {
+    min-width: 0;
+}
+
+.nosotros-timeline-item .nosotros-timeline-marker {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.nosotros-timeline-item .nosotros-timeline-content {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+}
+
+.nosotros-timeline-item > img {
+    grid-column: 3;
+    grid-row: 1;
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+.nosotros-timeline-item:nth-child(even) .nosotros-timeline-content {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.nosotros-timeline-item:nth-child(even) > img {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.nosotros-timeline-marker {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: 52px;
+    height: 52px;
+    margin: auto;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 0 0 8px var(--gray-100);
+}
+
+.nosotros-timeline-content span {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nosotros-timeline-content h3 {
+    margin: 10px 0 14px;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+.nosotros-timeline-content p {
+    margin-bottom: 0;
+}
+
+.nosotros-timeline-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   VALORES
+   ========================= */
+
+.nosotros-quality {
+    padding: 100px 0;
+}
+
+.nosotros-quality-card {
+    padding: clamp(30px, 6vw, 70px);
+    border-radius: var(--radius-lg);
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.nosotros-quality-card .nosotros-kicker {
+    color: rgba(247, 245, 237, 0.82);
+}
+
+.nosotros-quality-card h2 {
+    max-width: 700px;
+}
+
+.nosotros-values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.nosotros-values article {
+    padding: 28px;
+    border: 1px solid rgba(247, 245, 237, 0.22);
+    border-radius: var(--radius-md);
+    background: rgba(247, 245, 237, 0.08);
+}
+
+.nosotros-values i {
+    font-size: 2rem;
+}
+
+.nosotros-values h3 {
+    margin: 18px 0 8px;
+}
+
+.nosotros-values p {
+    margin: 0;
+    color: rgba(247, 245, 237, 0.82);
+}
+
+/* =========================
+   CTA
+   ========================= */
+
+.nosotros-cta {
+    padding: 80px 0 110px;
+    text-align: center;
+}
+
+.nosotros-cta h2 {
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.nosotros-cta .caracol-btn {
+    display: inline-flex;
+}
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 991.98px) {
+    .nosotros-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .nosotros-feature-copy {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .nosotros-timeline-item {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+    }
+
+    .nosotros-timeline-list::before {
+        left: 26px;
+    }
+
+    .nosotros-timeline-marker {
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .nosotros-timeline-item .nosotros-timeline-content,
+    .nosotros-timeline-item:nth-child(even) .nosotros-timeline-content {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+    }
+
+    .nosotros-timeline-item > img,
+    .nosotros-timeline-item:nth-child(even) > img {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+        margin-top: 8px;
+    }
+
+    .nosotros-values {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   MÓVIL
+   ========================= */
+
+@media (max-width: 767.98px) {
+    .page-nosotros {
+        padding-top: 72px;
+        overflow-x: hidden;
+    }
+
+    .nosotros-hero {
+        padding: 65px 16px 55px;
+    }
+
+    .nosotros-origin,
+    .nosotros-timeline,
+    .nosotros-quality {
+        padding: 65px 16px;
+    }
+
+    .nosotros-cta {
+        padding: 65px 16px 80px;
+    }
+
+    .nosotros-feature-copy h2,
+    .nosotros-section-heading h2,
+    .nosotros-quality-card h2,
+    .nosotros-cta h2 {
+        font-size: 2.1rem;
+    }
+
+    /*
+     * MÓVIL — timeline
+     *
+     * En lugar de depender de un grid de dos columnas, el marcador
+     * se posiciona de forma absoluta. Así el texto nunca puede
+     * quedar debajo del círculo ni comprimirse en una columna
+     * demasiado estrecha.
+     */
+    .nosotros-timeline-list {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+    }
+
+    .nosotros-timeline-list::before {
+        left: 26px;
+        transform: none;
+    }
+
+    .nosotros-timeline-item,
+    .nosotros-timeline-item:nth-child(even) {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .nosotros-timeline-item .nosotros-timeline-marker,
+    .nosotros-timeline-item:nth-child(even) .nosotros-timeline-marker {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        display: grid;
+        width: 52px;
+        height: 52px;
+        margin: 0;
+        place-items: center;
+    }
+
+    .nosotros-timeline-item .nosotros-timeline-content,
+    .nosotros-timeline-item:nth-child(even) .nosotros-timeline-content {
+        display: block;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding-left: 72px;
+        text-align: left;
+    }
+
+    .nosotros-timeline-item > img,
+    .nosotros-timeline-item:nth-child(even) > img {
+        display: block;
+        width: calc(100% - 72px);
+        max-width: none;
+        height: auto;
+        margin: 24px 0 0 72px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .nosotros-timeline-content h3 {
+        margin-top: 8px;
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    .nosotros-timeline-content p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .nosotros-timeline-content span {
+        display: block;
+        line-height: 1.3;
+    }
+}

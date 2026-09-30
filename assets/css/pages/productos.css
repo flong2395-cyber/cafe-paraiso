@@ -1,0 +1,178 @@
+.page-productos {
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.productos-header {
+    padding: 90px 0 35px;
+    text-align: center;
+}
+
+.productos-header .container {
+    max-width: 1000px;
+}
+
+.productos-title {
+    margin: 20px auto;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.12;
+}
+
+.productos-lead {
+    max-width: 720px;
+    margin: auto;
+    color: var(--gray-500);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.productos-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto 18px;
+}
+
+.productos-filter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 9px 18px;
+    border: 2px solid var(--primary-color);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--primary-color);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.productos-filter:hover,
+.productos-filter.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.productos-count {
+    min-height: 24px;
+    margin: 0;
+    color: var(--gray-500);
+    font-size: 0.95rem;
+}
+
+.productos-grid {
+    padding-bottom: 100px;
+}
+
+.caracol-product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+.caracol-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.caracol-product-image {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.caracol-product-image-wrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.caracol-product-image {
+    transition: transform 0.4s ease;
+}
+
+.caracol-product-card:hover .caracol-product-image {
+    transform: scale(1.04);
+}
+
+.caracol-product-body {
+    flex: 1;
+    padding: 24px;
+    text-align: center;
+}
+
+.caracol-product-category {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.caracol-product-body h3 {
+    margin-bottom: 12px;
+}
+
+.caracol-product-body p {
+    margin: 0;
+    color: var(--gray-500);
+    line-height: 1.7;
+}
+
+.caracol-product-price {
+    display: block;
+    margin-top: 18px;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+}
+
+@media (max-width: 767.98px) {
+    .productos-header {
+        padding: 65px 0 30px;
+    }
+
+    .productos-header .container,
+    .productos-grid .container {
+        padding: 0 16px;
+    }
+
+    .productos-filters {
+        margin-bottom: 14px;
+    }
+
+    .caracol-product-image {
+        height: 210px;
+    }
+}
+
+.caracol-product-add {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 11px;
+    background: var(--primary-color);
+    color: var(--white);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease, background-color .2s ease;
+}
+.caracol-product-add:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-1px); }
+.caracol-product-add:disabled { opacity: .7; cursor: wait; }

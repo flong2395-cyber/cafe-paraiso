@@ -1,0 +1,56 @@
+/* ==========================================
+   VARIABLES GLOBALES DE LA INTERFAZ PÚBLICA
+   ========================================== */
+
+:root {
+    /* =========================
+       COLORES PRINCIPALES
+       ========================= */
+    --primary-color: #18463D;
+    --primary-dark: #0A1D19;
+    --secondary-color: #E96F45;
+
+    /* =========================
+       COLORES NEUTROS Y TEXTO
+       ========================= */
+    --white: #F7F5ED;
+    --gray-100: #E8E0CE;
+    --gray-500: #4A5847;
+    --gray-900: #0A1D19;
+    --text-color: #0A1D19;
+
+    /* =========================
+       TIPOGRAFÍA
+       ========================= */
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Poppins", sans-serif;
+
+    /* =========================
+       ESPACIADO
+       ========================= */
+    --space-3xl: 7rem;
+
+    /* =========================
+       BORDES Y RADIOS
+       ========================= */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* =========================
+       SOMBRAS
+       ========================= */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    /* =========================
+       TRANSICIONES
+       ========================= */
+    --transition: transform 0.35s ease,
+                  opacity 0.35s ease,
+                  background-color 0.35s ease,
+                  color 0.35s ease,
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease,
+                  height 0.35s ease;
+}

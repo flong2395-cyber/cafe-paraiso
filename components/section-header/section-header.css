@@ -1,0 +1,50 @@
+/* ==========================================
+   SECTION HEADER
+   ========================================== */
+
+.caracol-section-header {
+    max-width: 700px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.caracol-section-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(24, 70, 61, 0.08);
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.caracol-section-header h2 {
+    font-size: 2.7rem;
+    margin-bottom: 20px;
+}
+
+.caracol-section-header p {
+    color: var(--gray-500);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 767px) {
+    .caracol-section-header {
+        margin-bottom: 50px;
+    }
+
+    .caracol-section-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .caracol-section-header h2 {
+        font-size: 2rem;
+    }
+
+    .caracol-section-header p {
+        font-size: 1rem;
+    }
+}

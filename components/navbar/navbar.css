@@ -1,0 +1,644 @@
+/* ==========================================
+   NAVBAR
+   ========================================== */
+
+
+/* ==========================================
+   NAVBAR PRINCIPAL
+   ========================================== */
+
+.caracol-navbar {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    height: 80px;
+
+    background: var(--primary-color);
+
+    border: 0;
+
+    transition:
+        background-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+    z-index: 1030;
+
+    overflow: visible;
+}
+
+
+/* ==========================================
+   CONTENEDOR
+   ========================================== */
+
+.caracol-navbar .container-fluid {
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* ==========================================
+   LOGO
+   ========================================== */
+
+.caracol-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    margin-left: 6px;
+}
+
+
+/* ==========================================
+   IMAGEN DEL LOGO
+   ========================================== */
+
+.caracol-logo-image {
+
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+
+    height: 64px;
+
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   NAVEGACIÓN
+   ========================================== */
+
+.caracol-navbar .navbar-nav {
+
+    display: flex;
+
+    gap: 8px;
+
+    min-width: 0;
+}
+
+
+/* ==========================================
+   ENLACES
+   ========================================== */
+
+.caracol-navbar .nav-link {
+
+    color: var(--white);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    padding: 0.75rem 1rem;
+
+    border-radius: var(--radius-sm);
+
+    white-space: nowrap;
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* ==========================================
+   HOVER
+   ========================================== */
+
+.caracol-navbar .nav-link:hover {
+
+    color: var(--white);
+
+    opacity: 0.8;
+}
+
+
+/* ==========================================
+   ENLACE ACTIVO
+   ========================================== */
+
+.caracol-navbar .nav-link.active {
+
+    color: var(--white);
+
+    border-bottom: 2px solid var(--white);
+}
+
+
+/* ==========================================
+   BOTÓN CTA
+   ========================================== */
+
+.caracol-navbar .btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--white);
+
+    color: var(--primary-color);
+
+    border: 2px solid transparent;
+
+    padding: 0.70rem 1.40rem;
+
+    border-radius: var(--radius-md);
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* ==========================================
+   HOVER CTA
+   ========================================== */
+
+.caracol-navbar .btn:hover {
+
+    background: var(--gray-100);
+
+    color: var(--primary-dark);
+}
+
+
+/* ==========================================
+   NAVBAR AL HACER SCROLL
+   ========================================== */
+
+.caracol-navbar.navbar-scroll {
+
+    background: var(--primary-color);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================
+   BOTÓN HAMBURGUESA
+   ========================================== */
+
+.navbar-toggler {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: auto;
+
+    border: 0;
+
+    box-shadow: none !important;
+
+    padding: 10px;
+
+    margin-right: 6px;
+
+    background: transparent;
+}
+
+
+/* ==========================================
+   FOCUS HAMBURGUESA
+   ========================================== */
+
+.navbar-toggler:focus-visible {
+
+    outline: 3px solid var(--white);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================
+   ICONO HAMBURGUESA
+   ========================================== */
+
+.navbar-toggler-icon {
+
+    position: relative;
+
+    display: block;
+
+    width: 28px;
+    height: 3px;
+
+    background: var(--white);
+
+    border-radius: 3px;
+
+    background-image: none;
+}
+
+
+/* ==========================================
+   LÍNEAS SUPERIOR E INFERIOR
+   ========================================== */
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 28px;
+    height: 3px;
+
+    background: var(--white);
+
+    border-radius: 3px;
+}
+
+
+.navbar-toggler-icon::before {
+
+    top: -8px;
+}
+
+
+.navbar-toggler-icon::after {
+
+    top: 8px;
+}
+
+
+/* ==========================================
+   TABLET / MÓVIL
+   ========================================== */
+
+@media (max-width: 991.98px) {
+
+    /* ------------------------------------------
+       NAVBAR
+       ------------------------------------------ */
+
+    .caracol-navbar {
+
+        width: 100%;
+        max-width: 100%;
+
+        height: 80px;
+
+        left: 0;
+        right: 0;
+    }
+
+
+    /* ------------------------------------------
+       CONTENEDOR
+       ------------------------------------------ */
+
+    .caracol-navbar .container-fluid {
+
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    /* ------------------------------------------
+       LOGO
+       ------------------------------------------ */
+
+    .caracol-logo {
+
+        min-width: 0;
+
+        max-width: calc(100% - 70px);
+
+        margin-left: 0;
+    }
+
+
+    .caracol-logo-image {
+
+        width: auto;
+
+        max-width: 100%;
+
+        height: 64px;
+    }
+
+
+    /* ------------------------------------------
+       MENÚ MÓVIL
+       ------------------------------------------ */
+
+    .caracol-navbar .navbar-collapse {
+
+        position: fixed;
+
+        top: 80px;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        max-width: 100%;
+
+        height: calc(100dvh - 80px);
+
+        max-height: calc(100dvh - 80px);
+
+        margin: 0;
+
+        padding: 0;
+
+        background: var(--primary-color);
+
+        z-index: 1029;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        visibility: hidden;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        /*
+            El menú comienza fuera de la pantalla,
+            pero sin utilizar una anchura superior
+            al viewport.
+        */
+
+        transform: translateX(100%);
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease,
+            visibility 0s linear 0.35s;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        overscroll-behavior-x: contain;
+    }
+
+
+    /* ------------------------------------------
+       MENÚ ABIERTO
+       ------------------------------------------ */
+
+    .caracol-navbar .navbar-collapse.show {
+
+        visibility: visible;
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform: translateX(0);
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease;
+    }
+
+
+    /* ------------------------------------------
+       ESTADO COLLAPSING DE BOOTSTRAP
+       ------------------------------------------ */
+
+    .caracol-navbar .navbar-collapse.collapsing {
+
+        display: flex;
+
+        width: 100%;
+        max-width: 100%;
+
+        height: calc(100dvh - 80px) !important;
+
+        max-height: calc(100dvh - 80px);
+
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        transform: translateX(100%);
+
+        opacity: 0;
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease;
+    }
+
+
+    /* ------------------------------------------
+       LISTA DE NAVEGACIÓN
+       ------------------------------------------ */
+
+    .caracol-navbar .navbar-nav {
+
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        flex: 1;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    /* ------------------------------------------
+       ENLACES MÓVILES
+       ------------------------------------------ */
+
+    .caracol-navbar .nav-link {
+
+        max-width: 100%;
+
+        font-size: 1.6rem;
+
+        font-weight: 700;
+
+        padding: 12px;
+
+        text-align: center;
+
+        white-space: normal;
+    }
+
+
+    /* ------------------------------------------
+       BOTÓN CTA MÓVIL
+       ------------------------------------------ */
+
+    .caracol-navbar .btn {
+
+        width: min(280px, calc(100% - 32px));
+
+        max-width: 280px;
+
+        margin-bottom: 60px;
+    }
+}
+
+
+/* ==========================================
+   MÓVIL PEQUEÑO
+   ========================================== */
+
+@media (max-width: 575.98px) {
+
+    .caracol-navbar .container-fluid {
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .caracol-logo {
+
+        max-width: calc(100% - 64px);
+    }
+
+
+    .caracol-logo-image {
+
+        height: 60px;
+    }
+
+
+    .navbar-toggler {
+
+        margin-right: 0;
+
+        padding: 8px;
+    }
+}
+
+
+/* ==========================================
+   REDUCCIÓN DE MOVIMIENTO
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .caracol-navbar,
+    .caracol-navbar .nav-link,
+    .caracol-navbar .btn,
+    .caracol-navbar .navbar-collapse {
+
+        transition: none;
+    }
+}
+
+/* Usuario autenticado */
+.caracol-navbar .navbar-user-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.caracol-navbar .navbar-user-icon,
+.caracol-navbar .navbar-user-avatar {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+}
+
+.caracol-navbar .navbar-user-avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(247, 245, 237, .75);
+}
+
+.navbar-cart-link {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+.navbar-cart-link:hover {
+    color: var(--white);
+    background: rgba(247,245,237,.12);
+    transform: translateY(-1px);
+}
+
+.navbar-cart-badge {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--secondary-color);
+    color: var(--primary-dark);
+    border: 2px solid var(--primary-color);
+    font-size: .62rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-cart-link { margin-left: auto !important; }
+}

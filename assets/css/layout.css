@@ -1,0 +1,52 @@
+/*==========================================
+ LAYOUT
+==========================================*/
+
+/*==========================================
+ CONTENEDOR PRINCIPAL
+==========================================*/
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*==========================================
+ FILAS BOOTSTRAP
+==========================================*/
+
+/*
+    Bootstrap utiliza márgenes negativos
+    en .row. Los limitamos para evitar
+    overflow horizontal en móviles.
+*/
+
+.row {
+    max-width: 100%;
+}
+
+/*==========================================
+ COLUMNAS
+==========================================*/
+
+.row > * {
+    min-width: 0;
+}
+
+/*==========================================
+ RESPONSIVE
+==========================================*/
+
+@media (max-width: 991.98px) {
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .row {
+        max-width: 100%;
+    }
+}

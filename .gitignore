@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+
+# Environment files and local credentials
+.env
+.env.*
+!.env.example
+
+# Generated browser configuration (contains installation-specific public values)
+services/config/runtime-config.js
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/
+
+# Personal database backups (kept outside the repository)
+supabase/backup/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Caches and test output
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.nyc_output/
+coverage/
+
+# Generated build output
+dist/
+build/
+
+# Personal editor and IDE settings
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+tmp/
+.tmp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Operating-system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

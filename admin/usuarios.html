@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Usuarios | Administración | Café Paraíso</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+    <aside class="admin-sidebar">
+        <div class="admin-brand"><strong>Café Paraíso</strong><span>Panel administrativo</span></div>
+        <nav class="admin-nav" aria-label="Administración">
+            <a href="index.html"><i class="bi bi-grid-1x2"></i>Dashboard</a>
+            <a class="active" href="usuarios.html"><i class="bi bi-people"></i>Usuarios</a>
+            <a href="productos.html"><i class="bi bi-cup-hot"></i>Productos</a><a href="pedidos.html"><i class="bi bi-bag-check"></i>Pedidos</a>
+            <a href="mensajes.html"><i class="bi bi-chat-left-text"></i>Mensajes</a>
+            <a href="../rrhh/index.html"><i class="bi bi-person-badge"></i>Área RRHH</a>
+            <a href="configuracion.html"><i class="bi bi-gear"></i>Configuración</a>
+        </nav>
+        <div class="admin-sidebar-footer"><button id="admin-logout" class="admin-nav" type="button"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</button></div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="admin-title"><h1>Usuarios</h1><p>Consulta y gestión de roles de las cuentas registradas.</p></div>
+            <div class="admin-user"><i class="bi bi-shield-check"></i><span id="admin-email">Administrador</span></div>
+        </header>
+
+        <section class="admin-section">
+            <div class="admin-section-header"><h2>Usuarios registrados</h2></div>
+            <div id="users-status" class="admin-status" hidden></div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Rol</th><th>Registro</th></tr></thead>
+                    <tbody id="users"><tr><td colspan="5" class="admin-empty">Cargando…</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+<script src="../services/config/runtime-config.js"></script>
+<script src="../services/config/supabase.js"></script>
+<script src="admin-auth.js"></script>
+<script>
+(async function () {
+    const admin = window.CafeAppAdmin;
+    const user = await admin.requireAdmin();
+    if (!user) return;
+
+    document.getElementById("admin-email").textContent = user.email || "Administrador";
+    document.getElementById("admin-logout").addEventListener("click", admin.logout);
+
+    const tbody = document.getElementById("users");
+    const status = document.getElementById("users-status");
+
+    try {
+        const users = await admin.getUsers();
+        tbody.innerHTML = users.length ? users.map(renderRow).join("") : '<tr><td colspan="5" class="admin-empty">No hay usuarios.</td></tr>';
+        tbody.querySelectorAll(".admin-role-save").forEach(button => button.addEventListener("click", handleRoleChange));
+    } catch (error) {
+        console.error("[Admin users]", error);
+        tbody.innerHTML = '<tr><td colspan="5" class="admin-empty admin-danger">No se pudieron cargar los usuarios.</td></tr>';
+    }
+
+    function renderRow(item) {
+        const isSelf = item.id === user.id;
+        return `<tr>
+            <td>${escapeHtml(item.full_name || "Sin nombre")}</td>
+            <td>${escapeHtml(item.email || "—")}</td>
+            <td>${escapeHtml(item.phone || "—")}</td>
+            <td>
+                <select class="admin-role-select" data-user-id="${escapeHtml(item.id)}" ${isSelf ? "disabled" : ""} aria-label="Rol de ${escapeHtml(item.email || "usuario")}">
+                    <option value="user" ${item.role === "user" ? "selected" : ""}>Usuario</option>
+                    <option value="rrhh" ${item.role === "rrhh" ? "selected" : ""}>RRHH</option>
+                    <option value="admin" ${item.role === "admin" ? "selected" : ""}>Administrador</option>
+                </select>
+                ${isSelf ? "" : `<button class="admin-role-save" type="button" data-user-id="${escapeHtml(item.id)}">Guardar</button>`}
+            </td>
+            <td>${formatDate(item.created_at)}</td>
+        </tr>`;
+    }
+
+    async function handleRoleChange(event) {
+        const button = event.currentTarget;
+        const select = tbody.querySelector(`select[data-user-id="${CSS.escape(button.dataset.userId)}"]`);
+        if (!select) return;
+
+        button.disabled = true;
+        try {
+            await admin.setUserRole(button.dataset.userId, select.value);
+            showStatus("Rol actualizado correctamente.", "success");
+        } catch (error) {
+            console.error("[Admin role]", error);
+            showStatus(error?.message || "No se pudo actualizar el rol.", "error");
+        } finally {
+            button.disabled = false;
+        }
+    }
+
+    function showStatus(message, type) {
+        status.hidden = false;
+        status.className = `admin-status ${type}`;
+        status.textContent = message;
+    }
+
+    function escapeHtml(value) {
+        return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+    }
+    function formatDate(value) {
+        return value ? new Intl.DateTimeFormat("es-ES", { dateStyle: "medium" }).format(new Date(value)) : "—";
+    }
+})();
+</script>
+</body>
+</html>

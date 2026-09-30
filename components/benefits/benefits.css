@@ -1,0 +1,149 @@
+/* ==========================================
+   BENEFITS
+   ========================================== */
+
+.caracol-benefits {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 120px 0;
+    background: var(--gray-100);
+    overflow: hidden;
+}
+
+.caracol-benefits .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+}
+
+.caracol-benefits .row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.caracol-benefits .row > * {
+    min-width: 0;
+}
+
+.caracol-benefit-card {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.caracol-benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.caracol-benefit-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: rgba(24, 70, 61, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.caracol-benefit-icon i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.caracol-benefit-card h3 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.caracol-benefit-card p {
+    width: 100%;
+    max-width: 100%;
+    color: var(--gray-500);
+    line-height: 1.7;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+
+    .caracol-benefits {
+        padding: 100px 0;
+    }
+
+    .caracol-benefits .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-benefits .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-benefits .row > * {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .caracol-benefits .caracol-section-header {
+        width: 100%;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .caracol-benefit-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .caracol-benefits {
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    .caracol-benefits .caracol-section-header {
+        max-width: 500px;
+    }
+
+    .caracol-benefit-card {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .caracol-benefits .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-benefit-card {
+        padding: 30px 20px;
+    }
+}
+
+/* FIN BENEFITS */

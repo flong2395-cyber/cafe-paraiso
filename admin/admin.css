@@ -1,0 +1,245 @@
+:root {
+    --admin-bg: #f5f2ed;
+    --admin-surface: #fff;
+    --admin-sidebar: #20211f;
+    --admin-sidebar-hover: #2d2f2c;
+    --admin-text: #26231f;
+    --admin-muted: #746e67;
+    --admin-border: #e5dfd7;
+    --admin-accent: #8a5a38;
+    --admin-accent-soft: #efe4d9;
+    --admin-danger: #a43d36;
+    --admin-success: #2f7654;
+    --admin-radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+body.admin-body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.admin-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.admin-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 26px 16px;
+    display: flex;
+    flex-direction: column;
+    background: var(--admin-sidebar);
+    color: #f6f1eb;
+}
+
+.admin-brand {
+    padding: 4px 12px 25px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.admin-brand strong {
+    display: block;
+    font: 700 1.15rem/1.2 Poppins, Inter, sans-serif;
+}
+
+.admin-brand span {
+    display: block;
+    margin-top: 5px;
+    color: rgba(255,255,255,.6);
+    font-size: .8rem;
+}
+
+.admin-nav {
+    display: grid;
+    gap: 5px;
+}
+
+.admin-nav a,
+.admin-nav button {
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    padding: 11px 13px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background: transparent;
+    color: inherit;
+    text-decoration: none;
+    text-align: left;
+    font: 500 .9rem/1.2 Inter, sans-serif;
+    cursor: pointer;
+}
+
+.admin-nav a:hover,
+.admin-nav a.active,
+.admin-nav button:hover {
+    background: var(--admin-sidebar-hover);
+}
+
+.admin-nav i { width: 20px; text-align: center; }
+.admin-sidebar-footer { margin-top: auto; }
+
+.admin-main {
+    min-width: 0;
+    padding: 32px;
+}
+
+.admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 26px;
+}
+
+.admin-title h1 {
+    margin: 0;
+    font: 700 clamp(1.65rem, 2.5vw, 2.2rem)/1.2 Poppins, Inter, sans-serif;
+}
+
+.admin-title p {
+    margin: 7px 0 0;
+    color: var(--admin-muted);
+}
+
+.admin-user {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    max-width: 340px;
+    padding: 9px 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid var(--admin-border);
+    border-radius: 999px;
+    background: var(--admin-surface);
+    font-size: .85rem;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.admin-card,
+.admin-section {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+}
+
+.admin-card { padding: 20px; }
+.admin-card-label { color: var(--admin-muted); font-size: .82rem; }
+.admin-card-value { margin-top: 9px; font-size: 1.75rem; font-weight: 700; }
+
+.admin-section { overflow: hidden; }
+.admin-section-header {
+    padding: 19px 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-section-header h2 {
+    margin: 0;
+    font: 600 1.05rem Poppins, Inter, sans-serif;
+}
+
+.admin-section-header a { color: var(--admin-accent); font-size: .88rem; }
+.admin-table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; min-width: 760px; border-collapse: collapse; }
+.admin-table th,
+.admin-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--admin-border);
+    text-align: left;
+    font-size: .88rem;
+    vertical-align: middle;
+}
+.admin-table th { color: var(--admin-muted); font-weight: 600; }
+.admin-table tr:last-child td { border-bottom: 0; }
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #eee9e3;
+    color: #625b54;
+    font-size: .74rem;
+    font-weight: 600;
+}
+.admin-badge.admin { background: var(--admin-accent-soft); color: var(--admin-accent); }
+.admin-badge.rrhh { background: #e7f0f5; color: #315f79; }
+
+.admin-role-select {
+    min-width: 132px;
+    padding: 7px 9px;
+    border: 1px solid var(--admin-border);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--admin-text);
+}
+
+.admin-role-save {
+    margin-left: 6px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--admin-accent);
+    color: #fff;
+    cursor: pointer;
+}
+.admin-role-save:disabled { opacity: .55; cursor: wait; }
+
+.admin-status {
+    margin: 0 21px 18px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: .84rem;
+}
+.admin-status.success { background: #e6f2eb; color: var(--admin-success); }
+.admin-status.error { background: #fae9e7; color: var(--admin-danger); }
+
+.admin-empty { padding: 28px 21px; color: var(--admin-muted); }
+.admin-danger { color: var(--admin-danger); }
+
+@media (max-width: 1050px) {
+    .admin-shell { grid-template-columns: 1fr; }
+    .admin-sidebar { position: static; height: auto; }
+    .admin-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .admin-sidebar-footer { margin-top: 12px; }
+    .admin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+    .admin-main { padding: 20px 14px; }
+    .admin-topbar { align-items: flex-start; flex-direction: column; }
+    .admin-nav { grid-template-columns: 1fr 1fr; }
+    .admin-grid { grid-template-columns: 1fr; }
+}
+
+
+.admin-button {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    min-height:40px; padding:9px 13px; border:1px solid var(--admin-border);
+    border-radius:10px; background:#fff; color:var(--admin-text); font:600 .84rem Inter,sans-serif; cursor:pointer;
+}
+.admin-button:hover { background:var(--admin-accent-soft); }
+.admin-button:disabled { opacity:.55; cursor:wait; }
+.d-none { display:none !important; }

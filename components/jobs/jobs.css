@@ -1,0 +1,232 @@
+/* ==========================================
+   JOBS
+   ========================================== */
+
+.caracol-jobs {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.caracol-jobs .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+}
+
+.caracol-jobs .row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.caracol-jobs .row > * {
+    min-width: 0;
+}
+
+.caracol-jobs-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.caracol-jobs-title {
+    width: 100%;
+    max-width: 650px;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin: 25px auto;
+}
+
+.caracol-jobs-text {
+    width: 100%;
+    max-width: 650px;
+    color: var(--gray-500);
+    line-height: 1.8;
+    margin: 0 auto 30px;
+}
+
+.caracol-jobs-list {
+    width: 100%;
+    max-width: 650px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 35px;
+}
+
+.caracol-jobs-list li {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.caracol-jobs-list li span:first-child {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+/* ==========================================
+   MÓVIL / TABLET
+   ========================================== */
+
+@media (max-width: 991.98px) {
+
+    .caracol-jobs {
+        padding: 90px 0;
+        text-align: center;
+    }
+
+    .caracol-jobs .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Neutraliza los gutters horizontales de Bootstrap */
+    .caracol-jobs .row {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-jobs .row > * {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .caracol-jobs-title,
+    .caracol-jobs-text {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .caracol-jobs-title {
+        max-width: 650px;
+    }
+
+    .caracol-jobs-text {
+        max-width: 650px;
+    }
+
+    /*
+     * Lista centrada como contenido, no simplemente como bloque
+     * alineado a la izquierda.
+     */
+    .caracol-jobs-list {
+        width: 100%;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .caracol-jobs-list li {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-jobs-list li span:first-child {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+
+    .caracol-jobs-list li span:last-child {
+        flex: 0 1 auto;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .caracol-jobs-image {
+        width: 100%;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .caracol-jobs .caracol-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .caracol-jobs {
+        padding: 80px 0;
+    }
+
+    .caracol-jobs-title {
+        font-size: 2.3rem;
+        line-height: 1.2;
+        margin: 20px auto;
+    }
+
+    .caracol-jobs-text {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .caracol-jobs-list {
+        max-width: 500px;
+    }
+
+    .caracol-jobs-list li {
+        margin-bottom: 12px;
+    }
+
+    .caracol-jobs-list li span:first-child {
+        display: none;
+    }
+
+    .caracol-jobs-list li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .caracol-jobs .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-jobs-title {
+        font-size: 2.1rem;
+        max-width: 320px;
+    }
+
+    .caracol-jobs-text {
+        font-size: 0.95rem;
+    }
+
+    .caracol-jobs-list {
+        max-width: 100%;
+    }
+}
+
+/* FIN JOBS */

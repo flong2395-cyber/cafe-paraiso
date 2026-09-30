@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex, nofollow">
+<title>Mensajes | Administración | Café Paraíso</title>
+<link rel="stylesheet" href="admin.css"><link rel="stylesheet" href="mensajes.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+</head>
+<body class="admin-body"><div class="admin-shell">
+<aside class="admin-sidebar"><div class="admin-brand"><strong>Café Paraíso</strong><span>Panel administrativo</span></div><nav class="admin-nav" aria-label="Administración">
+<a href="index.html"><i class="bi bi-grid-1x2"></i>Dashboard</a><a href="usuarios.html"><i class="bi bi-people"></i>Usuarios</a><a href="productos.html"><i class="bi bi-cup-hot"></i>Productos</a><a href="pedidos.html"><i class="bi bi-bag-check"></i>Pedidos</a><a class="active" href="mensajes.html"><i class="bi bi-chat-left-text"></i>Mensajes</a>
+            <a href="../rrhh/index.html"><i class="bi bi-person-badge"></i>Área RRHH</a><a href="configuracion.html"><i class="bi bi-gear"></i>Configuración</a>
+</nav><div class="admin-sidebar-footer"><button id="admin-logout" class="admin-nav" type="button"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</button></div></aside>
+<main class="admin-main"><header class="admin-topbar"><div class="admin-title"><h1>Mensajes</h1><p>Gestiona las consultas recibidas desde la web.</p></div><div class="admin-user"><i class="bi bi-shield-check"></i><span id="admin-email">Administrador</span></div></header>
+<section class="admin-grid" aria-label="Resumen de mensajes"><article class="admin-card"><div class="admin-card-label">Total</div><div class="admin-card-value" id="stat-total">—</div></article><article class="admin-card"><div class="admin-card-label">Sin leer</div><div class="admin-card-value" id="stat-unread">—</div></article><article class="admin-card"><div class="admin-card-label">Leídos</div><div class="admin-card-value" id="stat-read">—</div></article><article class="admin-card"><div class="admin-card-label">Archivados</div><div class="admin-card-value" id="stat-archived">—</div></article></section>
+<section class="admin-section"><div class="admin-section-header"><h2>Bandeja de entrada</h2><button id="refresh-messages" class="admin-button" type="button"><i class="bi bi-arrow-clockwise"></i>Actualizar</button></div>
+<div class="message-toolbar"><input id="message-search" type="search" placeholder="Buscar por nombre, email o mensaje…" aria-label="Buscar mensajes"><select id="message-status" aria-label="Filtrar por estado"><option value="all">Todos los estados</option><option value="unread">Sin leer</option><option value="read">Leídos</option><option value="archived">Archivados</option></select></div>
+<div id="messages-status" class="admin-status d-none"></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Contacto</th><th>Motivo</th><th>Mensaje</th><th>Estado</th><th>Fecha</th><th>Acciones</th></tr></thead><tbody id="messages-list"><tr><td colspan="6" class="admin-empty">Cargando…</td></tr></tbody></table></div></section>
+</main></div>
+<div id="message-modal" class="message-modal" hidden><div class="message-dialog" role="dialog" aria-modal="true" aria-labelledby="message-modal-title"><div class="message-dialog-header"><h2 id="message-modal-title">Mensaje</h2><button id="close-message" class="message-dialog-close" type="button" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button></div><div id="message-detail" class="message-dialog-body"></div><div class="message-dialog-footer"><button id="modal-archive" class="admin-button" type="button">Archivar</button><button id="modal-read" class="admin-button" type="button">Marcar leído</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script><script src="../services/config/runtime-config.js"></script><script src="../services/config/supabase.js"></script><script src="admin-auth.js"></script><script src="mensajes.js"></script>
+</body></html>

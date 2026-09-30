@@ -1,0 +1,361 @@
+/*==========================================
+ PRODUCTS
+==========================================*/
+
+.caracol-products {
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding: 100px 0;
+
+    overflow: hidden;
+}
+
+
+/*==========================================
+ CONTENEDOR
+==========================================*/
+
+.caracol-products .container {
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    min-width: 0;
+}
+
+
+/*==========================================
+ GRID
+==========================================*/
+
+.caracol-products #products-grid {
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+}
+
+
+/*==========================================
+ COLUMNAS
+==========================================*/
+
+.caracol-products #products-grid > * {
+
+    min-width: 0;
+}
+
+
+/*==========================================
+ TARJETA
+==========================================*/
+
+.caracol-product-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 430px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: var(--white);
+
+    text-decoration: none;
+    color: inherit;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/*==========================================
+ HOVER
+==========================================*/
+
+.caracol-product-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/*==========================================
+ IMAGEN
+==========================================*/
+
+.caracol-product-image {
+
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+.caracol-product-card:hover .caracol-product-image {
+
+    transform: scale(1.06);
+}
+
+
+/*==========================================
+ CONTENIDO
+==========================================*/
+
+.caracol-product-body {
+
+    flex: 1;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/*==========================================
+ TÍTULO
+==========================================*/
+
+.caracol-product-body h3 {
+
+    width: 100%;
+    max-width: 100%;
+
+    margin-bottom: 15px;
+}
+
+
+/*==========================================
+ TEXTO
+==========================================*/
+
+.caracol-product-body p {
+
+    width: 100%;
+    max-width: 100%;
+
+    color: var(--gray-500);
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+
+/*==========================================
+ BOTÓN CATÁLOGO
+==========================================*/
+
+.caracol-products > .container > .text-center {
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/*==========================================
+ TABLET
+==========================================*/
+
+@media (max-width: 991.98px) {
+
+    .caracol-products {
+
+        padding: 90px 0;
+    }
+
+    .caracol-products .container {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-product-card {
+
+        height: auto;
+
+        min-height: 400px;
+    }
+}
+
+
+/*==========================================
+ MÓVIL
+==========================================*/
+
+@media (max-width: 767.98px) {
+
+    .caracol-products {
+
+        padding: 80px 0;
+
+        text-align: center;
+    }
+
+    .caracol-products .container {
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-products #products-grid {
+
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-product-card {
+
+        width: 100%;
+
+        min-height: 0;
+
+        height: auto;
+    }
+
+    .caracol-product-body {
+
+        padding: 24px 20px 28px;
+    }
+
+    .caracol-product-image {
+
+        height: 220px;
+    }
+}
+
+
+/*==========================================
+ MÓVIL PEQUEÑO
+==========================================*/
+
+@media (max-width: 575.98px) {
+
+    .caracol-products .container {
+
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .caracol-product-image {
+
+        height: 210px;
+    }
+
+    .caracol-product-body {
+
+        padding: 22px 18px 26px;
+    }
+
+    .caracol-product-body p {
+
+        font-size: 0.95rem;
+    }
+}
+/*==========================================
+ ELEMENTOS DE COMPRA
+==========================================*/
+
+.caracol-product-price {
+    display: block;
+    margin-top: 18px;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.caracol-product-add {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 11px;
+    background: var(--primary-color);
+    color: var(--white);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease, background-color .2s ease;
+}
+
+.caracol-product-add:hover:not(:disabled) {
+    background: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+.caracol-product-add:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
+}
+
+.caracol-product-add:disabled {
+    opacity: .7;
+    cursor: wait;
+}
+
+/* En portada las tarjetas son escaparate: sin compra mantienen
+   una composición limpia y equilibrada. */
+.caracol-products .caracol-product-body {
+    padding: 24px 25px 26px;
+}
+
+.caracol-products .caracol-product-category {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+    .caracol-product-price,
+    .caracol-product-add {
+        margin-top: 16px;
+    }
+}

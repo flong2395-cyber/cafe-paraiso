@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dashboard | Administración | Café Paraíso</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+    <aside class="admin-sidebar">
+        <div class="admin-brand"><strong>Café Paraíso</strong><span>Panel administrativo</span></div>
+        <nav class="admin-nav" aria-label="Administración">
+            <a class="active" href="index.html"><i class="bi bi-grid-1x2"></i>Dashboard</a>
+            <a href="usuarios.html"><i class="bi bi-people"></i>Usuarios</a>
+            <a href="productos.html"><i class="bi bi-cup-hot"></i>Productos</a>
+            <a href="pedidos.html"><i class="bi bi-bag-check"></i>Pedidos</a>
+            <a href="mensajes.html"><i class="bi bi-chat-left-text"></i>Mensajes</a>
+            <a href="../rrhh/index.html"><i class="bi bi-person-badge"></i>Área RRHH</a>
+            <a href="configuracion.html"><i class="bi bi-gear"></i>Configuración</a>
+        </nav>
+        <div class="admin-sidebar-footer"><button id="admin-logout" class="admin-nav" type="button"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</button></div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="admin-title"><h1>Dashboard</h1><p>Resumen general de la plataforma.</p></div>
+            <div class="admin-user"><i class="bi bi-shield-check"></i><span id="admin-email">Administrador</span></div>
+        </header>
+
+        <section class="admin-grid" aria-label="Resumen">
+            <article class="admin-card"><div class="admin-card-label">Usuarios</div><div class="admin-card-value" id="stat-users">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Administradores</div><div class="admin-card-value" id="stat-admins">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">RRHH</div><div class="admin-card-value" id="stat-rrhh">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Productos</div><div class="admin-card-value" id="stat-products">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Mensajes sin leer</div><div class="admin-card-value" id="stat-messages">—</div></article>
+        </section>
+
+        <section class="admin-section">
+            <div class="admin-section-header"><h2>Usuarios recientes</h2><a href="usuarios.html">Ver usuarios</a></div>
+            <div id="dashboard-status" class="admin-status d-none"></div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Registro</th></tr></thead>
+                    <tbody id="recent-users"><tr><td colspan="4" class="admin-empty">Cargando…</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+<script src="../services/config/runtime-config.js"></script>
+<script src="../services/config/supabase.js"></script>
+<script src="admin-auth.js"></script>
+<script>
+(async function () {
+    const admin = window.CafeAppAdmin;
+    const user = await admin.requireAdmin();
+    if (!user) return;
+
+    document.getElementById("admin-email").textContent = user.email || "Administrador";
+    document.getElementById("admin-logout").addEventListener("click", admin.logout);
+
+    try {
+        const [users, messages] = await Promise.all([admin.getUsers(), admin.getMessageStats()]);
+        document.getElementById("stat-users").textContent = users.length;
+        document.getElementById("stat-admins").textContent = users.filter(u => u.role === "admin").length;
+        document.getElementById("stat-rrhh").textContent = users.filter(u => u.role === "rrhh").length;
+        document.getElementById("stat-messages").textContent = messages.unread;
+        const { count: productCount, error: productError } = await window.CafeAppSupabase.from("products").select("id", { count: "exact", head: true }).eq("is_available", true);
+        if (!productError) document.getElementById("stat-products").textContent = productCount ?? 0;
+
+        const rows = users.slice(0, 8).map(u => `
+            <tr>
+                <td>${escapeHtml(u.full_name || "Sin nombre")}</td>
+                <td>${escapeHtml(u.email || "—")}</td>
+                <td><span class="admin-badge ${u.role === "admin" ? "admin" : u.role === "rrhh" ? "rrhh" : ""}">${u.role === "admin" ? "Administrador" : u.role === "rrhh" ? "RRHH" : "Usuario"}</span></td>
+                <td>${formatDate(u.created_at)}</td>
+            </tr>`).join("");
+        document.getElementById("recent-users").innerHTML = rows || '<tr><td colspan="4" class="admin-empty">No hay usuarios.</td></tr>';
+    } catch (error) {
+        console.error("[Admin dashboard]", error);
+        document.getElementById("recent-users").innerHTML = '<tr><td colspan="4" class="admin-empty admin-danger">No se pudieron cargar los usuarios.</td></tr>';
+    }
+
+    function escapeHtml(value) {
+        return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+    }
+    function formatDate(value) {
+        return value ? new Intl.DateTimeFormat("es-ES", { dateStyle: "medium" }).format(new Date(value)) : "—";
+    }
+})();
+</script>
+</body>
+</html>

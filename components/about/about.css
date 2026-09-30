@@ -1,0 +1,225 @@
+/* ==========================================
+   ABOUT
+   ========================================== */
+
+.caracol-about {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.caracol-about .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+}
+
+.caracol-about .row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.caracol-about .row > * {
+    min-width: 0;
+}
+
+.caracol-about-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.caracol-about-title {
+    width: 100%;
+    max-width: 650px;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin: 25px auto;
+}
+
+.caracol-about-text {
+    width: 100%;
+    max-width: 650px;
+    color: var(--gray-500);
+    line-height: 1.8;
+    margin: 0 auto 30px;
+}
+
+.caracol-about-list {
+    width: 100%;
+    max-width: 650px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 35px;
+}
+
+.caracol-about-list li {
+    margin-bottom: 15px;
+    color: var(--gray-900);
+    font-weight: 500;
+}
+
+.caracol-about-list li span:first-child {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+/* ==========================================
+   MÓVIL / TABLET
+   ========================================== */
+
+@media (max-width: 991.98px) {
+
+    .caracol-about {
+        padding: 90px 0;
+        text-align: center;
+    }
+
+    .caracol-about .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Neutraliza los gutters horizontales de Bootstrap */
+    .caracol-about .row {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-about .row > * {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .caracol-about-title,
+    .caracol-about-text {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .caracol-about-title {
+        max-width: 650px;
+    }
+
+    .caracol-about-text {
+        max-width: 650px;
+    }
+
+    /*
+     * El bloque completo de la lista ocupa el ancho disponible,
+     * pero cada elemento queda centrado visualmente.
+     */
+    .caracol-about-list {
+        width: 100%;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .caracol-about-list li {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .caracol-about-list li span:first-child {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+
+    .caracol-about-list li span:last-child {
+        flex: 0 1 auto;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .caracol-about .caracol-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .caracol-about {
+        padding: 80px 0;
+    }
+
+    .caracol-about-title {
+        font-size: 2.3rem;
+        line-height: 1.2;
+        margin: 20px auto;
+    }
+
+    .caracol-about-text {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .caracol-about-list {
+        max-width: 500px;
+    }
+
+    .caracol-about-list li span:first-child {
+        display: none;
+    }
+
+    .caracol-about-list li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .caracol-about .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .caracol-about-title {
+        font-size: 2.1rem;
+    }
+
+    .caracol-about-text {
+        font-size: 0.95rem;
+    }
+
+    .caracol-about-list {
+        max-width: 100%;
+    }
+
+    .caracol-about-list li {
+        margin-bottom: 12px;
+    }
+}
+
+/* FIN ABOUT */

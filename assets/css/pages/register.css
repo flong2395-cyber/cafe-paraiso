@@ -1,0 +1,417 @@
+/* =========================================================
+   REGISTER | CAFÉ PARAÍSO
+   ========================================================= */
+
+.page-register {
+    min-height: 100vh;
+    padding: 120px 20px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(
+            rgba(15, 10, 8, 0.42),
+            rgba(15, 10, 8, 0.42)
+        ),
+        url("../../img/login/cafe-background.webp")
+        center center / cover no-repeat;
+}
+
+.register-shell {
+    width: 100%;
+    max-width: 1040px;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 28px;
+    background: var(--white);
+    box-shadow: 0 24px 70px rgba(25, 35, 30, 0.14);
+}
+
+.register-brand-panel {
+    padding: 56px 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(145deg, rgba(24, 70, 61, 0.95), rgba(32, 75, 67, 0.88));
+    color: var(--white);
+    backdrop-filter: blur(3px);
+}
+
+.register-brand-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: rgba(247, 245, 237, 0.16);
+    font-size: 1.55rem;
+}
+
+.register-brand-panel .caracol-section-badge {
+    width: fit-content;
+    margin-bottom: 18px;
+    background: rgba(247, 245, 237, 0.14);
+    color: var(--white);
+}
+
+.register-brand-panel h1 {
+    margin: 0 0 18px;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.register-brand-panel > p {
+    max-width: 370px;
+    margin: 0;
+    color: rgba(247, 245, 237, 0.84);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.register-brand-points {
+    margin-top: 34px;
+    display: grid;
+    gap: 14px;
+}
+
+.register-brand-points span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(247, 245, 237, 0.95);
+    font-size: 0.94rem;
+    font-weight: 500;
+}
+
+.register-brand-points i {
+    color: var(--white);
+}
+
+.register-card {
+    min-width: 0;
+    padding: 48px 58px 42px;
+    background: rgba(247, 245, 237, 0.97);
+    backdrop-filter: blur(8px);
+}
+
+.register-header {
+    margin-bottom: 28px;
+}
+
+.register-mobile-badge {
+    display: none;
+}
+
+.register-header h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.55rem);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.04em;
+}
+
+.register-header p {
+    margin: 0;
+    color: var(--gray-500);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.register-card .caracol-form-group {
+    margin-bottom: 18px;
+}
+
+.register-card .caracol-form-label {
+    margin-bottom: 8px;
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.register-input {
+    position: relative;
+}
+
+.register-input > i {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none;
+}
+
+.register-input .caracol-form-control {
+    width: 100%;
+    min-height: 50px;
+    padding-left: 44px;
+    border: 1px solid #d9dfdc;
+    border-radius: 12px;
+    background: #fbfcfb;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.register-input .caracol-form-control:focus {
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(24, 70, 61, 0.1);
+}
+
+.register-password-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.register-password-grid > * {
+    min-width: 0;
+}
+
+.register-terms {
+    margin: 4px 0 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--gray-500);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    cursor: pointer;
+}
+
+.register-terms input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--primary-color);
+    flex: 0 0 auto;
+}
+
+.register-submit {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.register-submit i {
+    transition: transform 0.2s ease;
+}
+
+.register-submit:hover i {
+    transform: translateX(4px);
+}
+
+.register-divider {
+    position: relative;
+    margin: 25px 0 19px;
+    text-align: center;
+}
+
+.register-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e8ece9;
+}
+
+.register-divider span {
+    position: relative;
+    padding: 0 12px;
+    background: var(--white);
+    color: var(--gray-500);
+    font-size: 0.82rem;
+}
+
+.register-login {
+    margin: 0;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.92rem;
+}
+
+.register-login a {
+    margin-left: 4px;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register-login a:hover {
+    text-decoration: underline;
+}
+
+.register-security {
+    margin: 24px 0 0;
+    padding-top: 17px;
+    border-top: 1px solid #edf0ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray-500);
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.register-security i {
+    color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+    .register-shell {
+        max-width: 780px;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    }
+
+    .register-brand-panel {
+        padding: 44px 34px;
+    }
+
+    .register-card {
+        padding: 44px 38px 36px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-register {
+        min-height: calc(100vh - 70px);
+        padding: 100px 16px 50px;
+    }
+
+    .register-shell {
+        max-width: 520px;
+        display: block;
+        border-radius: 24px;
+    }
+
+    .register-brand-panel {
+        display: none;
+    }
+
+    .register-card {
+        padding: 38px 26px 30px;
+    }
+
+    .register-mobile-badge {
+        display: inline-flex;
+        margin-bottom: 18px;
+    }
+
+    .register-header {
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+    .register-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-register {
+        padding: 92px 12px 36px;
+        background: var(--white) !important;
+        background-image: none !important;
+    }
+
+    .register-shell {
+        border-radius: 20px;
+        box-shadow: 0 14px 40px rgba(25, 35, 30, 0.1);
+    }
+
+    .register-card {
+        padding: 30px 20px 24px;
+        background: rgba(247, 245, 237, 0.98);
+    }
+
+    .register-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .register-header p {
+        font-size: 0.94rem;
+    }
+
+    .register-password-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .register-input .caracol-form-control {
+        min-height: 50px;
+    }
+
+    .register-security {
+        align-items: flex-start;
+        line-height: 1.5;
+    }
+}
+
+
+/* =========================================================
+   AUTENTICACIÓN — MENSAJES Y ESTADOS
+   ========================================================= */
+
+.auth-message {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.auth-message[hidden] {
+    display: none;
+}
+
+.auth-message-error {
+    border-color: #f1c7c7;
+    background: #fff5f5;
+    color: #a52626;
+}
+
+.auth-message-success {
+    border-color: #bfe6cf;
+    background: #f1fbf5;
+    color: #14743d;
+}
+
+.auth-spinner {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: auth-spin 0.7s linear infinite;
+}
+
+@keyframes auth-spin {
+    to { transform: rotate(360deg); }
+}
+
+.login-submit:disabled,
+.register-submit:disabled {
+    opacity: 0.75;
+    cursor: wait;
+}

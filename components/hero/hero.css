@@ -1,0 +1,438 @@
+/*==========================================
+ HERO
+==========================================*/
+
+.caracol-hero {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding-top: 170px;
+    padding-bottom: 100px;
+
+    overflow: hidden;
+}
+
+/*==========================================
+ FONDO
+==========================================*/
+
+.caracol-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    max-width: 100%;
+
+    background:
+        linear-gradient(
+            rgba(247, 245, 237, .75),
+            rgba(247, 245, 237, .75)
+        ),
+        url("../../assets/img/backgrounds/hero-bg.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+}
+
+/*==========================================
+ CONTENEDOR
+==========================================*/
+
+.caracol-hero .container {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 1200px;
+    min-width: 0;
+
+    z-index: 2;
+}
+
+/*==========================================
+ FILA
+==========================================*/
+
+.caracol-hero .row {
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+}
+
+/*==========================================
+ COLUMNAS
+==========================================*/
+
+.caracol-hero .row > * {
+
+    min-width: 0;
+}
+
+/*==========================================
+ BADGE
+==========================================*/
+
+.caracol-hero-badge {
+
+    display: inline-block;
+
+    max-width: 100%;
+
+    padding: 8px 18px;
+
+    background: rgba(24, 70, 61, .10);
+
+    color: var(--primary-color);
+
+    border-radius: 50px;
+
+    font-size: .90rem;
+    font-weight: 600;
+
+    margin-bottom: 25px;
+}
+
+/*==========================================
+ TÍTULO
+==========================================*/
+
+.caracol-hero-title {
+
+    max-width: 100%;
+
+    font-size: 3.7rem;
+    font-weight: 700;
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+
+    color: var(--gray-900);
+}
+
+/*==========================================
+ DESCRIPCIÓN
+==========================================*/
+
+.caracol-hero-description {
+
+    width: 100%;
+    max-width: 650px;
+
+    font-size: 1.15rem;
+    line-height: 1.8;
+
+    color: var(--gray-500);
+
+    margin-bottom: 40px;
+}
+
+/*==========================================
+ BOTONES
+==========================================*/
+
+.caracol-hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    max-width: 100%;
+}
+
+/*==========================================
+ IMAGEN
+==========================================*/
+
+.caracol-hero-image {
+
+    display: block;
+
+    height: 600px;
+
+    width: auto;
+
+    /*
+        IMPORTANTE:
+        Antes estaba en max-width:none.
+        Eso podía permitir que la imagen
+        excediera el ancho disponible.
+    */
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    margin-bottom: -180px;
+}
+
+/*==========================================
+ TABLET
+==========================================*/
+
+@media (max-width: 991px) {
+
+    .caracol-hero {
+
+        padding-top: 140px;
+        padding-bottom: 140px;
+
+        text-align: center;
+    }
+
+    /* Contenedor */
+
+    .caracol-hero .container {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Fila */
+
+    .caracol-hero .row {
+
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: 0;
+
+        flex-direction: column;
+    }
+
+    /* Columnas */
+
+    .caracol-hero .col-lg-5,
+    .caracol-hero .col-lg-7 {
+
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    /* Título */
+
+    .caracol-hero-title {
+
+        font-size: 3rem;
+    }
+
+    /* Descripción */
+
+    .caracol-hero-description {
+
+        max-width: 650px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-bottom: 40px;
+    }
+
+    /* Botones */
+
+    .caracol-hero-buttons {
+
+        justify-content: center;
+    }
+
+    /* Imagen */
+
+    .caracol-hero-image {
+
+        display: none;
+    }
+
+    /* Fondo */
+
+    .caracol-hero::before {
+
+        background: var(--white);
+    }
+}
+
+/*==========================================
+ MÓVIL
+==========================================*/
+
+@media (max-width: 767px) {
+
+    .caracol-hero {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-top: 120px;
+        padding-bottom: 120px;
+
+        text-align: center;
+    }
+
+    /* Contenedor */
+
+    .caracol-hero .container {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Fila */
+
+    .caracol-hero .row {
+
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Título */
+
+    .caracol-hero-title {
+
+        max-width: 100%;
+
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    /* Descripción */
+
+    .caracol-hero-description {
+
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 1rem;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-bottom: 35px;
+    }
+
+    /* Botones */
+
+    .caracol-hero-buttons {
+
+        width: 100%;
+        max-width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+    /* Botones individuales */
+
+    .caracol-btn {
+
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Imagen */
+
+    .caracol-hero-image {
+
+        display: none;
+    }
+
+    /* Fondo */
+
+    .caracol-hero::before {
+
+        background: var(--white);
+    }
+}
+
+/*==========================================
+ MÓVIL PEQUEÑO
+==========================================*/
+
+@media (max-width: 575px) {
+
+    .caracol-hero {
+
+        width: 100%;
+        max-width: 100%;
+
+        padding-top: 100px;
+        padding-bottom: 90px;
+    }
+
+    /* Badge */
+
+    .caracol-hero-badge {
+
+        max-width: 100%;
+
+        font-size: .8rem;
+
+        padding: 7px 15px;
+    }
+
+    /* Título */
+
+    .caracol-hero-title {
+
+        max-width: 100%;
+
+        font-size: 2rem;
+    }
+
+    /* Descripción */
+
+    .caracol-hero-description {
+
+        width: 100%;
+        max-width: 100%;
+
+        font-size: .95rem;
+
+        line-height: 1.7;
+    }
+
+    /* Imagen */
+
+    .caracol-hero-image {
+
+        display: none;
+    }
+
+    /* Fondo */
+
+    .caracol-hero::before {
+
+        background: var(--white);
+    }
+}
+
+/*==========================================
+ FIN HERO
+==========================================*/

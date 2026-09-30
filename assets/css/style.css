@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700&display=swap");
+@import url("variables.css");
+@import url("reset.css");
+@import url("typography.css");
+@import url("layout.css");
+@import url("utilities.css");
+
+/* Componentes */
+@import url("../../components/navbar/navbar.css");
+@import url("../../components/hero/hero.css");
+@import url("../../components/products/products.css");
+@import url("../../components/section-header/section-header.css");
+@import url("../../components/button/button.css");
+@import url("../../components/about/about.css");
+@import url("../../components/benefits/benefits.css");
+@import url("../../components/statistics/statistics.css");
+@import url("../../components/jobs/jobs.css");
+@import url("../../components/footer/footer.css");
+
+@import url("cookies.css");

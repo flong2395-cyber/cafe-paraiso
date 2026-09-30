@@ -1,0 +1,27 @@
+.cafe-cookie-banner {
+    position: fixed;
+    z-index: 9999;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 22px;
+    background: var(--white);
+    color: var(--text-color);
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+.cafe-cookie-banner__text { max-width: 760px; }
+.cafe-cookie-banner__text strong { display:block; margin-bottom: 4px; }
+.cafe-cookie-banner__text p { margin:0; line-height:1.5; }
+.cafe-cookie-banner__actions { display:flex; flex-wrap:wrap; gap:10px; }
+.cafe-cookie-banner__actions button { border:0; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:600; }
+@media (max-width: 760px) {
+  .cafe-cookie-banner { flex-direction:column; align-items:stretch; left:10px; right:10px; bottom:10px; }
+  .cafe-cookie-banner__actions { justify-content:stretch; }
+  .cafe-cookie-banner__actions button { flex:1; }
+}

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        (() => {
+            try {
+                if (localStorage.getItem("cafe-el-caracol-theme") === "dark") {
+                    document.documentElement.classList.add("account-dark");
+                }
+            } catch (_) {}
+        })();
+    </script>
+
+    <title>Mi cuenta | Café Paraíso</title>
+    <meta name="description" content="Gestiona tu cuenta de Café Paraíso.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages/mi-cuenta.css">
+</head>
+
+<body class="account-page">
+
+<!-- =========================================================
+     NAVBAR EXCLUSIVO DEL ÁREA DE CUENTA
+     ========================================================= -->
+<header class="account-navbar" id="account-navbar">
+    <div class="account-navbar-inner">
+
+        <a class="account-brand" href="index.html" aria-label="Café Paraíso - Inicio">
+            <img src="assets/img/logo/logo.webp" alt="Café Paraíso">
+        </a>
+
+        <nav class="account-navbar-links" id="account-navbar-links" aria-label="Navegación del área personal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="productos.html">Productos</a>
+            <a href="#jobs" data-account-navbar-link="jobs">Trabaja con Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <div class="account-navbar-actions">
+
+            <a class="account-cart-button" href="carrito.html" aria-label="Ver carrito">
+                <i class="bi bi-cart3"></i>
+                <span class="account-cart-badge d-none">0</span>
+            </a>
+
+            <div class="account-user-menu">
+                <button
+                    type="button"
+                    class="account-user-trigger"
+                    id="account-user-trigger"
+                    aria-expanded="false"
+                    aria-controls="account-user-dropdown"
+                >
+                    <span class="account-user-avatar-wrap">
+                        <img id="account-navbar-avatar" class="account-user-avatar d-none" src="" alt="">
+                        <span id="account-navbar-avatar-placeholder" class="account-user-avatar-placeholder">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                    </span>
+
+                    <span id="account-navbar-name" class="account-user-name">Usuario</span>
+                    <i class="bi bi-chevron-down account-user-chevron"></i>
+                </button>
+
+                <div class="account-user-dropdown" id="account-user-dropdown" hidden>
+                    <div class="account-user-dropdown-head">
+                        <strong id="account-dropdown-name">Usuario</strong>
+                        <span id="account-dropdown-email">correo@ejemplo.com</span>
+                    </div>
+
+                    <div class="account-user-dropdown-divider"></div>
+
+                    <a href="#profile" data-account-dropdown-link="profile">
+                        <i class="bi bi-person"></i>
+                        <span>Mi cuenta</span>
+                    </a>
+
+                    <button type="button" id="account-dropdown-logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+
+            <button
+                type="button"
+                class="account-mobile-toggle"
+                id="account-mobile-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="account-mobile-menu" id="account-mobile-menu" hidden>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="productos.html">Productos</a>
+        <a href="#jobs" data-account-navbar-link="jobs">Trabaja con Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</header>
+
+<main class="account-main">
+
+    <div class="account-shell">
+
+        <div id="account-loading" class="account-message">
+            <i class="bi bi-arrow-repeat spin"></i>
+            <span>Cargando tu cuenta...</span>
+        </div>
+
+        <div id="account-error" class="account-message account-message-error d-none">
+            <i class="bi bi-exclamation-circle"></i>
+            <span id="account-error-text">No se pudo cargar tu cuenta.</span>
+        </div>
+
+        <div id="account-content" class="d-none">
+
+            <div class="account-layout">
+
+                <!-- =====================================================
+                     MENÚ LATERAL
+                     ===================================================== -->
+                <aside class="account-menu" aria-label="Gestión de la cuenta">
+
+                    <div class="account-menu-heading">
+                        <span class="account-menu-eyebrow">Área personal</span>
+                        <h1>Mi cuenta</h1>
+                    </div>
+
+                    <nav class="account-nav" role="tablist" aria-label="Configuración de la cuenta">
+
+                        <button
+                            type="button"
+                            class="account-nav-item active"
+                            data-account-panel="profile"
+                            role="tab"
+                            aria-selected="true"
+                        >
+                            <span class="account-nav-icon">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Datos personales</strong>
+                                <small>Información de tu perfil</small>
+                            </span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="account-nav-item"
+                            data-account-panel="password"
+                            role="tab"
+                            aria-selected="false"
+                        >
+                            <span class="account-nav-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Seguridad</strong>
+                                <small>Contraseña y acceso</small>
+                            </span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="account-nav-item"
+                            data-account-panel="jobs"
+                            role="tab"
+                            aria-selected="false"
+                        >
+                            <span class="account-nav-icon">
+                                <i class="bi bi-briefcase"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Trabaja con nosotros</strong>
+                                <small>Envía tu CV y consulta tus candidaturas</small>
+                            </span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <div class="account-menu-divider"></div>
+
+                        <button type="button" class="account-nav-item" data-account-panel="orders" role="tab" aria-selected="false">
+                            <span class="account-nav-icon"><i class="bi bi-bag-check"></i></span>
+                            <span class="account-nav-copy"><strong>Compras</strong><small>Historial y seguimiento de pedidos</small></span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <button type="button" class="account-nav-item" data-account-panel="payments" role="tab" aria-selected="false">
+                            <span class="account-nav-icon"><i class="bi bi-credit-card"></i></span>
+                            <span class="account-nav-copy"><strong>Métodos de pago</strong><small>Elige tu forma de pago preferida</small></span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <button type="button" class="account-nav-item" data-account-panel="addresses" role="tab" aria-selected="false">
+                            <span class="account-nav-icon"><i class="bi bi-geo-alt"></i></span>
+                            <span class="account-nav-copy"><strong>Direcciones</strong><small>Gestiona tus direcciones de entrega</small></span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <div class="account-menu-divider"></div>
+                        <div class="account-menu-section-title">Configuración</div>
+
+                        <button
+                            type="button"
+                            class="account-nav-item"
+                            data-account-panel="notifications"
+                            role="tab"
+                            aria-selected="false"
+                        >
+                            <span class="account-nav-icon">
+                                <i class="bi bi-bell"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Notificaciones</strong>
+                                <small>Mensajes y avisos de tu cuenta</small>
+                            </span>
+                            <span class="account-notification-badge d-none" id="account-notification-badge">0</span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <button type="button" class="account-nav-item account-nav-disabled" disabled>
+                            <span class="account-nav-icon">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Privacidad</strong>
+                                <small>Controla tus datos</small>
+                            </span>
+                            <span class="account-coming-soon">Próximamente</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="account-nav-item"
+                            data-account-panel="preferences"
+                            role="tab"
+                            aria-selected="false"
+                        >
+                            <span class="account-nav-icon">
+                                <i class="bi bi-sliders"></i>
+                            </span>
+                            <span class="account-nav-copy">
+                                <strong>Preferencias</strong>
+                                <small>Personaliza tu experiencia</small>
+                            </span>
+                            <i class="bi bi-chevron-right account-nav-arrow"></i>
+                        </button>
+
+                        <div class="account-menu-divider"></div>
+
+                        <button type="button" class="account-logout-menu" id="logout-button">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </nav>
+
+                </aside>
+
+                <!-- =====================================================
+                     PANEL PRINCIPAL
+                     ===================================================== -->
+                <section class="account-panels" aria-live="polite">
+
+                    <!-- COMPRAS -->
+                    <article class="account-panel" data-account-content="orders" role="tabpanel" hidden>
+                        <div class="account-panel-header">
+                            <div><span class="account-panel-eyebrow">Historial</span><h2>Mis compras</h2><p>Consulta tus pedidos, productos, importes y estado de entrega.</p></div>
+                            <div class="account-panel-header-icon"><i class="bi bi-bag-check"></i></div>
+                        </div>
+                        <div id="account-orders-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        <div id="account-orders-list" class="commerce-account-list"><div class="account-applications-empty"><i class="bi bi-arrow-repeat spin"></i><span>Cargando pedidos…</span></div></div>
+                    </article>
+
+                    <!-- MÉTODOS DE PAGO -->
+                    <article class="account-panel" data-account-content="payments" role="tabpanel" hidden>
+                        <div class="account-panel-header">
+                            <div><span class="account-panel-eyebrow">Pago</span><h2>Métodos de pago</h2><p>Selecciona el método que quieres usar por defecto al realizar tus pedidos.</p></div>
+                            <div class="account-panel-header-icon"><i class="bi bi-credit-card"></i></div>
+                        </div>
+                        <div class="payment-account-notice"><i class="bi bi-shield-check"></i><div><strong>No guardamos datos bancarios ni de tarjetas.</strong><span>Solo almacenamos tu método preferido. El pago se gestiona según la opción elegida.</span></div></div>
+                        <div id="account-payment-options" class="account-payment-options"></div>
+                        <div id="account-payment-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                    </article>
+
+                    <!-- DIRECCIONES -->
+                    <article class="account-panel" data-account-content="addresses" role="tabpanel" hidden>
+                        <div class="account-panel-header">
+                            <div><span class="account-panel-eyebrow">Entrega</span><h2>Direcciones</h2><p>Guarda tus direcciones para no tener que escribirlas en cada pedido.</p></div>
+                            <div class="account-panel-header-icon"><i class="bi bi-geo-alt"></i></div>
+                        </div>
+                        <div class="account-address-toolbar"><span>Direcciones guardadas</span><button type="button" class="account-primary-button" id="account-address-new"><i class="bi bi-plus"></i> Nueva dirección</button></div>
+                        <div id="account-address-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        <div id="account-address-list" class="account-address-list"></div>
+                        <form id="account-address-form" class="account-address-form d-none" novalidate>
+                            <input type="hidden" id="account-address-id">
+                            <div class="account-address-form-heading"><strong id="account-address-form-title">Nueva dirección</strong><button type="button" class="account-icon-button" id="account-address-cancel" aria-label="Cancelar"><i class="bi bi-x-lg"></i></button></div>
+                            <div class="account-address-grid">
+                                <label class="account-form-field"><span class="account-field-label">Etiqueta</span><input class="account-input" id="address-label" maxlength="60" placeholder="Casa, trabajo…" required></label>
+                                <label class="account-form-field"><span class="account-field-label">Persona receptora</span><input class="account-input" id="address-recipient" maxlength="120" required></label>
+                                <label class="account-form-field"><span class="account-field-label">Teléfono</span><input class="account-input" id="address-phone" maxlength="30" required></label>
+                                <label class="account-form-field account-address-full"><span class="account-field-label">Dirección</span><input class="account-input" id="address-line" maxlength="180" required></label>
+                                <label class="account-form-field"><span class="account-field-label">Código postal</span><input class="account-input" id="address-postal" maxlength="12" required></label>
+                                <label class="account-form-field"><span class="account-field-label">Municipio</span><input class="account-input" id="address-city" maxlength="100" required></label>
+                                <label class="account-form-field"><span class="account-field-label">Provincia</span><input class="account-input" id="address-province" maxlength="100" required></label>
+                                <label class="account-form-field account-address-full"><span class="account-field-label">Indicaciones (opcional)</span><textarea class="account-input" id="address-notes" maxlength="500"></textarea></label>
+                            </div>
+                            <label class="account-address-default"><input type="checkbox" id="address-default"><span>Usar como dirección principal</span></label>
+                            <div class="account-form-actions"><button type="submit" class="account-primary-button"><span>Guardar dirección</span><i class="bi bi-check2"></i></button></div>
+                        </form>
+                    </article>
+
+                    <!-- NOTIFICACIONES -->
+                    <article
+                        class="account-panel"
+                        data-account-content="notifications"
+                        role="tabpanel"
+                        hidden
+                    >
+                        <div class="account-panel-header">
+                            <div>
+                                <span class="account-panel-eyebrow">Buzón</span>
+                                <h2>Notificaciones</h2>
+                                <p>Aquí recibirás mensajes y avisos relacionados con tu cuenta y tus candidaturas.</p>
+                            </div>
+                            <div class="account-panel-header-icon">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+
+                        <div class="account-notifications-toolbar">
+                            <div>
+                                <strong id="account-notifications-count">Tus notificaciones</strong>
+                                <span>Los mensajes nuevos aparecen como no leídos.</span>
+                            </div>
+                            <div class="account-notifications-toolbar-actions">
+                                <button type="button" class="account-secondary-button" id="account-notifications-read-all">
+                                    <i class="bi bi-check2-all"></i><span>Marcar todo como leído</span>
+                                </button>
+                                <button type="button" class="account-secondary-button account-notifications-delete-all" id="account-notifications-delete-all">
+                                    <i class="bi bi-trash3"></i><span>Borrar todo</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="account-notifications-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        <div id="account-notifications-list" class="account-notifications-list">
+                            <div class="account-notifications-empty"><i class="bi bi-arrow-repeat spin"></i><span>Cargando notificaciones…</span></div>
+                        </div>
+                    </article>
+
+                    <!-- DATOS PERSONALES -->
+                    <article
+                        class="account-panel active"
+                        data-account-content="profile"
+                        role="tabpanel"
+                    >
+                        <div class="account-panel-header">
+                            <div>
+                                <span class="account-panel-eyebrow">Mi cuenta</span>
+                                <h2>Datos personales</h2>
+                                <p>Actualiza tu información personal y cómo te mostramos en Café Paraíso.</p>
+                            </div>
+
+                            <div class="account-panel-header-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+
+                        <div class="account-profile-grid">
+
+                            <div class="account-photo-column">
+                                <span class="account-field-label">Foto de perfil</span>
+
+                                <div class="account-profile-avatar-large">
+                                    <img
+                                        id="profile-avatar-preview"
+                                        class="account-avatar-image d-none"
+                                        src=""
+                                        alt="Foto de perfil"
+                                    >
+
+                                    <div
+                                        id="profile-avatar-placeholder"
+                                        class="account-avatar-placeholder"
+                                        aria-hidden="true"
+                                    >
+                                        <i class="bi bi-person-fill"></i>
+                                    </div>
+                                </div>
+
+                                <label for="avatar-input" class="account-avatar-button">
+                                    <i class="bi bi-camera"></i>
+                                    <span>Cambiar foto</span>
+                                </label>
+
+                                <input
+                                    id="avatar-input"
+                                    class="d-none"
+                                    type="file"
+                                    accept="image/jpeg,image/png,image/webp,image/gif"
+                                >
+
+                                <small class="account-avatar-help">
+                                    JPG, PNG, WEBP o GIF · máximo 5 MB
+                                </small>
+
+                                <div id="avatar-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                            </div>
+
+                            <form id="profile-form" class="account-profile-form">
+
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="profile-name">
+                                        Nombre y apellidos
+                                    </label>
+
+                                    <input
+                                        class="account-input"
+                                        id="profile-name"
+                                        type="text"
+                                        autocomplete="name"
+                                        maxlength="120"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="profile-email">
+                                        Correo electrónico
+                                    </label>
+
+                                    <input
+                                        class="account-input account-input-readonly"
+                                        id="profile-email"
+                                        type="email"
+                                        autocomplete="email"
+                                        readonly
+                                    >
+
+                                    <small class="account-help">
+                                        El correo se gestiona mediante Supabase Auth.
+                                    </small>
+                                </div>
+
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="profile-phone">
+                                        Teléfono
+                                    </label>
+
+                                    <input
+                                        class="account-input"
+                                        id="profile-phone"
+                                        type="tel"
+                                        autocomplete="tel"
+                                        maxlength="30"
+                                        placeholder="+34 000 000 000"
+                                    >
+                                </div>
+
+                                <div class="account-form-actions">
+                                    <button
+                                        class="account-primary-button"
+                                        type="submit"
+                                        id="profile-submit"
+                                    >
+                                        <span>Guardar cambios</span>
+                                        <i class="bi bi-check2"></i>
+                                    </button>
+                                </div>
+
+                                <div
+                                    id="profile-status"
+                                    class="account-status d-none"
+                                    role="status"
+                                    aria-live="polite"
+                                ></div>
+                            </form>
+
+                        </div>
+
+                        <div class="account-verification-card">
+                            <span class="account-verification-icon">
+                                <i class="bi bi-check-lg"></i>
+                            </span>
+
+                            <div>
+                                <strong>Cuenta verificada</strong>
+                                <span>Tu correo electrónico está verificado.</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- SEGURIDAD -->
+                    <article
+                        class="account-panel"
+                        data-account-content="password"
+                        role="tabpanel"
+                        hidden
+                    >
+                        <div class="account-panel-header">
+                            <div>
+                                <span class="account-panel-eyebrow">Seguridad</span>
+                                <h2>Cambiar contraseña</h2>
+                                <p>Actualiza tu contraseña para mantener tu cuenta protegida.</p>
+                            </div>
+
+                            <div class="account-panel-header-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+
+                        <div class="account-security-notice">
+                            <span class="account-notice-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </span>
+
+                            <div>
+                                <strong>Consejo de seguridad</strong>
+                                <span>Utiliza una contraseña única de al menos 6 caracteres.</span>
+                            </div>
+                        </div>
+
+                        <form id="password-form" class="account-password-form" novalidate>
+
+                            <div class="account-form-field">
+                                <label class="account-field-label" for="current-password">
+                                    Contraseña actual
+                                </label>
+
+                                <div class="account-password-input">
+                                    <input
+                                        class="account-input"
+                                        id="current-password"
+                                        type="password"
+                                        autocomplete="current-password"
+                                        minlength="6"
+                                        required
+                                    >
+
+                                    <button type="button" data-password-toggle="current-password" aria-label="Mostrar contraseña">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="account-password-grid">
+
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="new-password">
+                                        Nueva contraseña
+                                    </label>
+
+                                    <div class="account-password-input">
+                                        <input
+                                            class="account-input"
+                                            id="new-password"
+                                            type="password"
+                                            autocomplete="new-password"
+                                            minlength="6"
+                                            maxlength="128"
+                                            required
+                                        >
+
+                                        <button type="button" data-password-toggle="new-password" aria-label="Mostrar contraseña">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="confirm-password">
+                                        Repetir nueva contraseña
+                                    </label>
+
+                                    <div class="account-password-input">
+                                        <input
+                                            class="account-input"
+                                            id="confirm-password"
+                                            type="password"
+                                            autocomplete="new-password"
+                                            minlength="6"
+                                            maxlength="128"
+                                            required
+                                        >
+
+                                        <button type="button" data-password-toggle="confirm-password" aria-label="Mostrar contraseña">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="account-password-rules">
+                                <span><i class="bi bi-check2"></i> Mínimo 6 caracteres</span>
+                                <span><i class="bi bi-check2"></i> Debe ser diferente de la actual</span>
+                            </div>
+
+                            <div class="account-form-actions">
+                                <button
+                                    class="account-primary-button"
+                                    type="submit"
+                                    id="password-submit"
+                                >
+                                    <span>Cambiar contraseña</span>
+                                    <i class="bi bi-check2"></i>
+                                </button>
+                            </div>
+
+                            <div
+                                id="password-status"
+                                class="account-status d-none"
+                                role="status"
+                                aria-live="polite"
+                            ></div>
+
+                        </form>
+                    </article>
+
+                    <!-- PREFERENCIAS -->
+                    <article
+                        class="account-panel"
+                        data-account-content="preferences"
+                        role="tabpanel"
+                        hidden
+                    >
+                        <div class="account-panel-header">
+                            <div>
+                                <span class="account-panel-eyebrow">Pantalla</span>
+                                <h2>Preferencias</h2>
+                                <p>Personaliza cómo se muestra tu área personal.</p>
+                            </div>
+                            <div class="account-panel-header-icon">
+                                <i class="bi bi-sliders"></i>
+                            </div>
+                        </div>
+
+                        <div class="account-preferences-list">
+                            <div class="account-preference-card">
+                                <div class="account-preference-icon">
+                                    <i id="theme-preference-icon" class="bi bi-moon-stars"></i>
+                                </div>
+                                <div class="account-preference-copy">
+                                    <strong>Modo oscuro</strong>
+                                    <span>Reduce el brillo de la interfaz y utiliza una paleta oscura.</span>
+                                </div>
+                                <button
+                                    type="button"
+                                    class="account-theme-switch"
+                                    id="account-theme-toggle"
+                                    role="switch"
+                                    aria-checked="false"
+                                    aria-label="Activar modo oscuro"
+                                >
+                                    <span class="account-theme-switch-thumb"></span>
+                                </button>
+                            </div>
+
+                            <div id="theme-preference-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        </div>
+                    </article>
+
+                    <!-- TRABAJA CON NOSOTROS -->
+                    <article
+                        class="account-panel account-jobs-panel"
+                        data-account-content="jobs"
+                        role="tabpanel"
+                        hidden
+                    >
+                        <div class="account-panel-header">
+                            <div>
+                                <span class="account-panel-eyebrow">Oportunidades</span>
+                                <h2>Trabaja con nosotros</h2>
+                                <p>Presenta tu candidatura desde tu cuenta y consulta el estado de tus solicitudes.</p>
+                            </div>
+                            <div class="account-panel-header-icon">
+                                <i class="bi bi-briefcase"></i>
+                            </div>
+                        </div>
+
+                        <div class="account-jobs-intro">
+                            <div class="account-jobs-intro-icon"><i class="bi bi-shield-check"></i></div>
+                            <div>
+                                <strong>Tu candidatura queda vinculada a tu cuenta.</strong>
+                                <span>Solo tú podrás consultar tus propias solicitudes. El equipo de RRHH y los administradores autorizados podrán revisarlas y actualizar su estado.</span>
+                            </div>
+                        </div>
+
+                        <form id="account-job-form" class="account-job-form" novalidate>
+                            <div class="account-job-form-heading">
+                                <div>
+                                    <h3>Enviar una nueva candidatura</h3>
+                                    <p>PDF, DOC o DOCX · máximo 5 MB.</p>
+                                </div>
+                            </div>
+
+                            <div class="account-job-grid">
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="account-job-name">Nombre y apellidos</label><small class="account-field-help">Se toma de tus datos personales.</small>
+                                    <input class="account-input" id="account-job-name" type="text" maxlength="120" readonly required aria-readonly="true">
+                                </div>
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="account-job-email">Correo electrónico</label><small class="account-field-help">Se toma de tu cuenta.</small>
+                                    <input class="account-input account-input-readonly" id="account-job-email" type="email" readonly required aria-readonly="true">
+                                </div>
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="account-job-phone">Teléfono</label><small class="account-field-help">Se toma de tus datos personales.</small>
+                                    <input class="account-input" id="account-job-phone" type="tel" maxlength="30" readonly required aria-readonly="true">
+                                </div>
+                                <div class="account-form-field">
+                                    <label class="account-field-label" for="account-job-position">Puesto de interés</label>
+                                    <select class="account-input" id="account-job-position" required>
+                                        <option value="" selected disabled>Selecciona una opción</option>
+                                        <option value="produccion">Producción</option>
+                                        <option value="almacen">Almacén y logística</option>
+                                        <option value="administracion">Administración</option>
+                                        <option value="comercial">Comercial y ventas</option>
+                                        <option value="reparto">Reparto y distribución</option>
+                                        <option value="otro">Otro / candidatura espontánea</option>
+                                    </select>
+                                </div>
+                                <div class="account-form-field account-job-full">
+                                    <label class="account-field-label" for="account-job-message">Cuéntanos sobre ti</label>
+                                    <textarea class="account-input account-job-textarea" id="account-job-message" minlength="10" maxlength="5000" required placeholder="Experiencia, formación, disponibilidad o cualquier información relevante."></textarea>
+                                </div>
+                                <div class="account-job-upload account-job-full">
+                                    <div class="account-jobs-intro-icon"><i class="bi bi-file-earmark-arrow-up"></i></div>
+                                    <div>
+                                        <label class="account-field-label" for="account-job-cv">Currículum vitae</label>
+                                        <input id="account-job-cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                                        <small id="account-job-cv-name">Ningún archivo seleccionado</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="account-job-consent">
+                                <input id="account-job-consent" type="checkbox" required>
+                                <span>Acepto que los datos facilitados sean tratados para gestionar mi candidatura y los procesos de selección.</span>
+                            </label>
+
+                            <div class="account-form-actions">
+                                <button class="account-primary-button" type="submit" id="account-job-submit">
+                                    <span>Enviar candidatura</span>
+                                    <i class="bi bi-send"></i>
+                                </button>
+                            </div>
+                            <div id="account-job-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        </form>
+
+                        <div class="account-applications-heading">
+                            <div>
+                                <span class="account-panel-eyebrow">Seguimiento</span>
+                                <h3>Mis candidaturas</h3>
+                                <p>Aquí aparecerán las solicitudes que hayas enviado y su estado actual. Puedes presentar varias candidaturas para distintos puestos.</p>
+                            </div>
+                            <button type="button" class="account-secondary-button" id="account-job-refresh">
+                                <i class="bi bi-arrow-clockwise"></i><span>Actualizar</span>
+                            </button>
+                        </div>
+                        <div id="account-applications-status" class="account-status d-none" role="status" aria-live="polite"></div>
+                        <div id="account-applications-list" class="account-applications-list">
+                            <div class="account-applications-empty"><i class="bi bi-arrow-repeat spin"></i><span>Cargando candidaturas…</span></div>
+                        </div>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+<script src="services/config/runtime-config.js"></script>
+<script src="services/config/supabase.js"></script>
+<script src="services/auth.js"></script>
+<script src="services/jobs.js"></script>
+<script src="services/notifications.js"></script>
+<script src="services/cart.js"></script>
+<script src="services/orders.js"></script>
+<script src="services/invoice.js"></script>
+<script src="assets/js/mi-cuenta.js"></script>
+<script src="assets/js/mi-cuenta-commerce.js"></script>
+
+</body>
+</html>

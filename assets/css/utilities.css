@@ -1,0 +1,8 @@
+/* ==========================================
+   CAFÉ PARAÍSO — UTILITIES
+   ========================================== */
+
+/* Espaciado común de secciones */
+.section {
+    padding-block: var(--space-3xl);
+}

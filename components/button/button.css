@@ -1,0 +1,65 @@
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.caracol-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 30px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.caracol-btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.caracol-btn-primary:hover {
+    background: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.caracol-btn-outline {
+    background: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.caracol-btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.caracol-btn:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
+}
+
+.caracol-btn:active {
+    transform: translateY(0);
+}
+
+.caracol-btn:disabled,
+.caracol-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .caracol-btn:hover,
+    .caracol-btn:active {
+        transform: none;
+    }
+}

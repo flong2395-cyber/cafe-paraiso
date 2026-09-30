@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>RRHH | Gestión de candidatos | Café Paraíso</title>
+    <link rel="stylesheet" href="../admin/admin.css">
+    <link rel="stylesheet" href="../admin/trabaja.css">
+    <link rel="stylesheet" href="rrhh.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+</head>
+<body class="admin-body hr-body">
+<div class="admin-shell">
+    <aside class="admin-sidebar">
+        <div class="admin-brand"><strong>Café Paraíso</strong><span>Recursos humanos</span></div>
+        <nav class="admin-nav" aria-label="Recursos humanos">
+            <a class="active" href="index.html"><i class="bi bi-people"></i>Candidaturas</a>
+            <a href="../trabajar.html"><i class="bi bi-briefcase"></i>Ver oferta pública</a>
+            <a href="../index.html"><i class="bi bi-globe2"></i>Web pública</a>
+        </nav>
+        <div class="admin-sidebar-footer"><button id="admin-logout" class="admin-nav" type="button"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</button></div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="admin-title"><h1>Gestión de candidatos</h1><p>Consulta, revisa y gestiona las candidaturas recibidas desde la web.</p></div>
+            <div class="admin-user"><i class="bi bi-person-badge"></i><span id="admin-email">RRHH</span></div>
+        </header>
+
+        <section class="admin-grid job-stats" aria-label="Resumen de candidaturas">
+            <article class="admin-card"><div class="admin-card-label">Candidaturas</div><div class="admin-card-value" id="stat-total">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Pendientes</div><div class="admin-card-value" id="stat-pending">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Aprobadas</div><div class="admin-card-value" id="stat-approved">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Rechazadas</div><div class="admin-card-value" id="stat-rejected">—</div></article>
+            <article class="admin-card"><div class="admin-card-label">Archivadas</div><div class="admin-card-value" id="stat-archived">—</div></article>
+        </section>
+
+        <section class="admin-section hr-candidates-section">
+            <div class="hr-section-heading">
+                <div>
+                    <span class="hr-kicker"><i class="bi bi-inbox"></i> Bandeja de RRHH</span>
+                    <h2>Candidaturas recibidas</h2>
+                    <p>Revisa perfiles, consulta CVs y actualiza el estado de cada candidatura.</p>
+                </div>
+                <div class="hr-live"><span></span>Datos en tiempo real</div>
+            </div>
+            <div class="job-toolbar">
+                <div class="job-search-wrap"><i class="bi bi-search"></i><input id="job-search" type="search" placeholder="Buscar por nombre, email o teléfono" autocomplete="off"></div>
+                <select id="job-status" class="job-filter" aria-label="Filtrar candidaturas">
+                    <option value="all">Todos los estados</option>
+                    <option value="pending">Pendientes</option>
+                    <option value="approved">Aprobadas</option>
+                    <option value="rejected">Rechazadas</option>
+                </select>
+                <button id="refresh-jobs" class="admin-button" type="button"><i class="bi bi-arrow-clockwise"></i>Actualizar</button>
+            </div>
+            <div id="jobs-status" class="admin-status d-none"></div>
+            <div class="admin-table-wrap">
+                <table class="admin-table jobs-table">
+                    <thead><tr><th>Candidato</th><th>Puesto</th><th>Contacto</th><th>Estado</th><th>Fecha</th><th>Acciones</th></tr></thead>
+                    <tbody id="jobs-list"><tr><td colspan="6" class="admin-empty">Cargando…</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="job-modal" id="job-modal" hidden>
+    <div class="job-modal-card" role="dialog" aria-modal="true" aria-labelledby="job-modal-title">
+        <div class="job-modal-header">
+            <div><span class="job-modal-kicker">Gestión de candidatura</span><h2 id="job-modal-title">Candidatura</h2><small id="job-meta" class="job-modal-meta"></small></div>
+            <button class="job-close" id="close-job" type="button" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="job-readonly-grid">
+            <div><span>Nombre y apellidos</span><strong id="job-name"></strong></div>
+            <div><span>Correo electrónico</span><strong id="job-email"></strong></div>
+            <div><span>Teléfono</span><strong id="job-phone"></strong></div>
+            <div><span>Puesto</span><strong id="job-position"></strong></div>
+            <div><label for="job-status-edit">Estado de la candidatura</label><select id="job-status-edit" class="job-edit-input"><option value="pending">Pendiente</option><option value="approved">Aprobada</option><option value="rejected">Rechazada</option></select><div id="job-status-archived" class="job-status-archived" hidden>Archivada · usa «Desarchivar» en la parte inferior para devolverla al flujo.</div></div>
+            <div class="job-edit-full"><span>Mensaje del candidato</span><div id="job-message" class="job-candidate-message"></div></div>
+        </div>
+        <div class="job-notification-box">
+            <div class="job-notification-heading"><div><span>Comunicación</span><strong>Enviar mensaje al candidato</strong><small>El mensaje aparecerá en Notificaciones dentro de su área personal.</small></div><i class="bi bi-bell"></i></div>
+            <textarea id="job-notification-message" class="job-edit-input" rows="5" maxlength="5000" placeholder="Escribe aquí el mensaje que quieres enviar al candidato…"></textarea>
+            <div class="job-notification-actions"><small id="job-notification-status"></small><button class="admin-button" id="job-send-notification" type="button"><i class="bi bi-send"></i> Enviar mensaje</button></div>
+        </div>
+        <div class="job-cv-card"><i class="bi bi-file-earmark-text"></i><div><strong id="job-cv-name">Documento adjunto</strong><small id="job-cv-meta">—</small></div><button class="admin-button" id="job-download" type="button"><i class="bi bi-box-arrow-up-right"></i> Ver CV</button></div>
+        <div class="job-modal-actions">
+            <button class="admin-button job-danger-button" id="job-delete" type="button"><i class="bi bi-trash"></i> Eliminar</button>
+            <button class="admin-button" id="job-archive" type="button"><i class="bi bi-archive"></i> Archivar</button>
+            <button class="admin-button" id="job-save" type="button"><i class="bi bi-check2"></i> Guardar estado</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+<script src="../services/config/runtime-config.js"></script>
+<script src="../services/config/supabase.js"></script>
+<script src="../admin/admin-auth.js"></script>
+<script>
+(function () {
+    "use strict";
+    const admin = window.CafeAppAdmin;
+    const $ = (id) => document.getElementById(id);
+    let applications = [];
+    let current = null;
+
+    const POSITION_LABELS = { produccion:"Producción", almacen:"Almacén y logística", administracion:"Administración", comercial:"Comercial y ventas", reparto:"Reparto y distribución", otro:"Otro / candidatura espontánea" };
+    const STATUS_LABELS = { pending:"Pendiente", approved:"Aprobada", rejected:"Rechazada", archived:"Archivada" };
+
+    function escapeHtml(v) { return String(v ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;"); }
+    function formatDate(v) { return v ? new Intl.DateTimeFormat("es-ES", { dateStyle:"medium", timeStyle:"short" }).format(new Date(v)) : "—"; }
+    function formatBytes(v) { if (!v) return "—"; return v < 1024*1024 ? `${Math.round(v/1024)} KB` : `${(v/1024/1024).toFixed(2)} MB`; }
+    function positionLabel(v) { return POSITION_LABELS[v] || v || "—"; }
+    function statusLabel(v) { return STATUS_LABELS[v] || v || "—"; }
+
+    async function init() {
+        const user = await admin.requireHR();
+        if (!user) return;
+        $("admin-email").textContent = user.email || "RRHH";
+        $("admin-logout").addEventListener("click", admin.logout);
+        $("refresh-jobs").addEventListener("click", loadAll);
+        $("job-status").addEventListener("change", load);
+        $("close-job").addEventListener("click", closeModal);
+        $("job-modal").addEventListener("click", e => { if (e.target === $("job-modal")) closeModal(); });
+        $("job-download").addEventListener("click", openCv);
+        $("job-save").addEventListener("click", saveStatus);
+        $("job-send-notification").addEventListener("click", sendNotification);
+        $("job-archive").addEventListener("click", () => current && saveStatusOnly(current.status === "archived" ? "pending" : "archived"));
+        $("job-delete").addEventListener("click", () => current && removeApplication(current));
+        let timer;
+        $("job-search").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(load, 250); });
+        await loadAll();
+    }
+
+    async function loadAll() { await Promise.all([loadStats(), load()]); }
+
+    async function loadStats() {
+        try {
+            const stats = await admin.getJobApplicationStats();
+            $("stat-total").textContent = stats.total;
+            $("stat-pending").textContent = stats.pending;
+            $("stat-approved").textContent = stats.approved;
+            $("stat-rejected").textContent = stats.rejected;
+            $("stat-archived").textContent = stats.archived;
+        } catch (error) { console.error("[RRHH stats]", error); }
+    }
+
+    async function load() {
+        $("jobs-list").innerHTML = '<tr><td colspan="6" class="admin-empty"><span class="hr-loading"><i class="bi bi-arrow-repeat"></i> Cargando candidaturas…</span></td></tr>';
+        try {
+            applications = await admin.getJobApplications({ status: $("job-status").value, search: $("job-search").value });
+            $("jobs-list").innerHTML = applications.map(row).join("") || '<tr><td colspan="6" class="admin-empty">No hay candidaturas con estos filtros.</td></tr>';
+            $("jobs-list").querySelectorAll("[data-view]").forEach(btn => btn.addEventListener("click", () => openApplication(applications.find(a => a.id === btn.dataset.view))));
+            $("jobs-list").querySelectorAll("[data-archive]").forEach(btn => btn.addEventListener("click", () => { const app = applications.find(a => a.id === btn.dataset.archive); if (app) saveStatusOnly(app.status === "archived" ? "pending" : "archived", app); }));
+            $("jobs-list").querySelectorAll("[data-delete]").forEach(btn => btn.addEventListener("click", () => removeApplication(applications.find(a => a.id === btn.dataset.delete))));
+        } catch (error) {
+            console.error("[RRHH candidaturas]", error);
+            $("jobs-list").innerHTML = '<tr><td colspan="6" class="admin-empty admin-danger">No se pudieron cargar las candidaturas. Comprueba la configuración de candidaturas en Supabase.</td></tr>';
+        }
+    }
+
+    function row(a) {
+        return `<tr>
+            <td><div class="job-candidate"><strong>${escapeHtml(a.name)}</strong><small>${escapeHtml(a.email)}</small></div></td>
+            <td><span class="job-position">${escapeHtml(positionLabel(a.position))}</span></td>
+            <td>${escapeHtml(a.phone)}</td>
+            <td><span class="job-status ${escapeHtml(a.status)}">${escapeHtml(statusLabel(a.status))}</span></td>
+            <td>${formatDate(a.created_at)}</td>
+            <td><div class="job-actions"><button class="admin-button" type="button" data-view="${escapeHtml(a.id)}" title="Ver candidatura y gestionar estado"><i class="bi bi-pencil-square"></i></button><button class="admin-button" type="button" data-archive="${escapeHtml(a.id)}" title="${a.status === "archived" ? "Desarchivar" : "Archivar"}"><i class="bi ${a.status === "archived" ? "bi-archive-fill" : "bi-archive"}"></i></button><button class="admin-button job-delete" type="button" data-delete="${escapeHtml(a.id)}" title="Eliminar candidatura"><i class="bi bi-trash"></i></button></div></td>
+        </tr>`;
+    }
+
+    function openApplication(application) {
+        if (!application) return;
+        current = application;
+        $("job-modal-title").textContent = application.name || "Candidatura";
+        const archived = application.status === "archived";
+        $("job-status-edit").hidden = archived;
+        $("job-status-edit").disabled = archived;
+        $("job-status-archived").hidden = !archived;
+        if (!archived) $("job-status-edit").value = ["pending", "approved", "rejected"].includes(application.status) ? application.status : "pending";
+        $("job-archive").innerHTML = archived ? '<i class="bi bi-archive-fill"></i> Desarchivar' : '<i class="bi bi-archive"></i> Archivar';
+        $("job-name").textContent = application.name || "—";
+        $("job-email").textContent = application.email || "—";
+        $("job-phone").textContent = application.phone || "—";
+        $("job-position").textContent = positionLabel(application.position);
+        $("job-message").textContent = application.message || "—";
+        $("job-notification-message").value = "";
+        $("job-notification-status").textContent = "";
+        $("job-notification-status").className = "";
+        $("job-meta").textContent = `Enviada el ${formatDate(application.created_at)} · Actualizada el ${formatDate(application.updated_at)}`;
+        $("job-cv-name").textContent = application.cv_name || "Documento adjunto";
+        $("job-cv-meta").textContent = `${formatBytes(application.cv_size)} · ${application.cv_type || "Documento"}`;
+        $("job-modal").hidden = false;
+    }
+
+    function closeModal() { $("job-modal").hidden = true; current = null; }
+
+    async function openCv() {
+        if (!current?.cv_path) return;
+        const button = $("job-download");
+        const original = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<i class="bi bi-arrow-repeat"></i> Preparando…';
+        try {
+            const url = await admin.createJobCvSignedUrl(current.cv_path, 300);
+            if (!url) throw new Error("No se generó el enlace.");
+            window.open(url, "_blank", "noopener,noreferrer");
+        } catch (error) {
+            console.error(error);
+            showStatus("No se pudo generar el enlace temporal del CV.", true);
+        } finally { button.disabled = false; button.innerHTML = original; }
+    }
+
+    async function saveStatusOnly(status, application = current) {
+        if (!application) return;
+        try {
+            await admin.setJobApplicationStatus(application.id, status);
+            await loadAll();
+            if (current?.id === application.id) {
+                const fresh = applications.find(a => a.id === application.id);
+                if (fresh) openApplication(fresh);
+            }
+            showStatus("Estado actualizado correctamente.");
+        } catch (error) { console.error(error); showStatus("No se pudo actualizar la candidatura.", true); }
+    }
+
+    async function saveStatus() {
+        if (!current) return;
+        const status = $("job-status-edit").value;
+        const button = $("job-save");
+        const original = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<i class="bi bi-arrow-repeat"></i> Guardando…';
+        try {
+            await admin.setJobApplicationStatus(current.id, status);
+            await loadAll();
+            const fresh = applications.find(a => a.id === current.id);
+            if (fresh) openApplication(fresh);
+            showStatus("Estado actualizado correctamente.");
+        } catch (error) {
+            console.error(error);
+            showStatus(error?.message || "No se pudo actualizar el estado.", true);
+        } finally {
+            button.disabled = false;
+            button.innerHTML = original;
+        }
+    }
+
+    async function sendNotification() {
+        if (!current) return;
+        const textarea = $("job-notification-message");
+        const statusEl = $("job-notification-status");
+        const message = textarea.value.trim();
+        if (message.length < 2) {
+            statusEl.textContent = "Escribe un mensaje antes de enviarlo.";
+            statusEl.className = "job-notification-error";
+            return;
+        }
+
+        const button = $("job-send-notification");
+        const original = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<i class="bi bi-arrow-repeat"></i> Enviando…';
+        statusEl.textContent = "";
+        try {
+            await admin.sendCandidateNotification(current.id, message);
+            textarea.value = "";
+            statusEl.textContent = "Mensaje enviado correctamente.";
+            statusEl.className = "job-notification-success";
+        } catch (error) {
+            console.error("[RRHH notification]", error);
+            statusEl.textContent = error?.message || "No se pudo enviar el mensaje.";
+            statusEl.className = "job-notification-error";
+        } finally {
+            button.disabled = false;
+            button.innerHTML = original;
+        }
+    }
+
+    async function removeApplication(application) {
+        if (!application || !confirm(`¿Eliminar definitivamente la candidatura de ${application.name}? También se eliminará su CV.`)) return;
+        try {
+            await admin.deleteJobApplication(application);
+            if (current?.id === application.id) closeModal();
+            await loadAll();
+            showStatus("Candidatura eliminada correctamente.");
+        } catch (error) { console.error(error); showStatus("No se pudo eliminar la candidatura.", true); }
+    }
+
+    function showStatus(text, error = false) {
+        const el = $("jobs-status");
+        el.hidden = false;
+        el.className = `admin-status ${error ? "error" : "success"}`;
+        el.textContent = text;
+        setTimeout(() => { el.className = "admin-status d-none"; }, 3500);
+    }
+
+    init();
+})();
+</script>
+</body>
+</html>
